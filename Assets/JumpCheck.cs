@@ -9,7 +9,7 @@ public class JumpCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myBod = GameObject.Find("mario").GetComponent<Rigidbody2D>();
+        myBod = GameObject.Find("Boolrio").GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
