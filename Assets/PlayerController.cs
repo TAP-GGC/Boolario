@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
@@ -13,10 +14,14 @@ public class PlayerController : MonoBehaviour
     Transform camTran;
 
     JumpCheck myJumpCheck;
-
+    Text scoreDisplay;
+    int score;
 
     void Start()
     {
+        scoreDisplay = GameObject.Find("Score").GetComponent<Text>();
+
+        score = 0;
         myBod = GetComponent<Rigidbody2D>();
         myRend = GetComponent<SpriteRenderer>();
         myAnim = GetComponent<Animator>();
@@ -57,14 +62,14 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.name == "PinkPot") {
-            if(GameObject.FindGameObjectsWithTag("Player").Length >= 50) {
-                SceneManager.LoadScene(0);
-            }
-            GameObject clone = Instantiate(gameObject);
-            clone.transform.position = new Vector3(0, 5, 0);
-        }
+        Destroy(collision.gameObject);
+        score++;
+        scoreDisplay.text = "Score: " + score;
     }
 
+    private void onCollisionEnter2D(Collider2D collision) {
+            SceneManager.LoadScene(0);
+        
+    }
 
 }
