@@ -62,14 +62,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.transform.tag == "TrueCoin") {
         Destroy(collision.gameObject);
         score++;
         scoreDisplay.text = "Score: " + score;
-    }
-
-    private void onCollisionEnter2D(Collider2D collision) {
-            SceneManager.LoadScene(0);
+        }
         
+        if(collision.transform.tag == "Spike") {
+                Application.LoadLevel(Application.loadedLevel);
+        }
     }
 
 }
