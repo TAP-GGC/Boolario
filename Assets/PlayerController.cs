@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
         
         if(collision.transform.tag == "Spike") {
-                Application.LoadLevel(Application.loadedLevel);
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
 
