@@ -16,7 +16,15 @@ public class PlayerController : MonoBehaviour
     JumpCheck myJumpCheck;
     Text scoreDisplay, logicDisplay, lastbooleanDisplay;
     int score, booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
+    
     bool boolean1, boolean2;
+    
+    int deathCounter = 0, //variables for stats
+        highScore = 0, 
+        trueCoinsCollected = 0, 
+        falseCoinsCollected = 0, 
+        andCoinsCollected = 0, 
+        orCoinsCollected = 0; 
 
     void Start()
     {
@@ -164,7 +172,10 @@ public class PlayerController : MonoBehaviour
 
         //restarts the game if the player collides with a spike        
         if(collision.transform.tag == "Spike") {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("MainMenu");
+            deathCounter++;
+
+            if(score > highScore) highScore = score;
         }
     }
 
