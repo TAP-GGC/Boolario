@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     JumpCheck myJumpCheck;
     Text scoreDisplay, logicDisplay, lastbooleanDisplay;
-    int score, booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
+    int score = 0, booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
     
     bool boolean1, boolean2;
     
@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
         logicDisplay = GameObject.Find("Logic").GetComponent<Text>();
         lastbooleanDisplay = GameObject.Find("LastBooleanCollected").GetComponent<Text>();
 
-        score = 0;
         booleanTracker = 1;
 
         boolean1 = false;
@@ -56,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
         
         if (Input.GetButtonDown("Jump") && myJumpCheck.isGrounded) {
-            myBod.velocity = new Vector2(myBod.velocity.x, 11);
+            myBod.velocity = new Vector2(myBod.velocity.x, 15);
         }
         
         //USE IF STATEMENTS and the SpriteRenderer component to flip X Mario when he moves left.
@@ -90,7 +89,7 @@ public class PlayerController : MonoBehaviour
         4th coin collected - "true"      logic statement - "true AND true"       --> the player gets a point
         */
 
-        if(booleanTracker == 1) {
+        /*if(booleanTracker == 1) {
             if(collision.transform.tag == "TrueCoin"){
                 Destroy(collision.gameObject);
                 boolean1 = true;
@@ -123,7 +122,7 @@ public class PlayerController : MonoBehaviour
             scoreDisplay.text = "Score: " + score;
             lastbooleanDisplay.text = "";
             logicDisplay.text = "No Logic Coin Collected";
-        }
+        }*/
 
         /*
         OPTION 2 FOR "AND" LOGIC: Each coin the player collects changes the value for the entire statement
@@ -132,9 +131,9 @@ public class PlayerController : MonoBehaviour
         The default value for the statement is: "false AND false"
         1st coin collected - "false"     logic statement - "false AND false"
         2nd coin collected - "true"      logic statement - "false AND true"
-        3rd coin collected - "true"      logic statement - "true AND true"    --> the player gets a point
+        3rd coin collected - "true"      logic statement - "true AND true"    --> the player gets a point*/
 
-        if(booleanTracker == 1) {
+        /*if(booleanTracker == 1) {
             if(collision.transform.tag == "TrueCoin"){
                 Destroy(collision.gameObject);
                 boolean1 = true;
