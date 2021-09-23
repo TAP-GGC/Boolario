@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
         
         if (Input.GetButtonDown("Jump") && myJumpCheck.isGrounded) {
-            myBod.velocity = new Vector2(myBod.velocity.x, 15);
+            myBod.velocity = new Vector2(myBod.velocity.x, 10);
         }
         
         //USE IF STATEMENTS and the SpriteRenderer component to flip X Mario when he moves left.
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
 
         //restarts the game if the player collides with a spike        
         if(collision.transform.tag == "Spike") {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("GameOver");
             deathCounter++;
 
             if(score > highScore) highScore = score;

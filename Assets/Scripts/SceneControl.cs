@@ -8,6 +8,7 @@ public class MainMenuButtons : MonoBehaviour
     void Start() {
         SceneManager.LoadScene("MainMenu");
     }
+
     public void SwitchToGame() {
         SceneManager.LoadScene("SampleScene");
     }
@@ -17,6 +18,6 @@ public class MainMenuButtons : MonoBehaviour
     }
 
     public void SwitchToMenu() {
-        Start();
+        SceneManager.LoadScene("MainMenu");
     }
 }
