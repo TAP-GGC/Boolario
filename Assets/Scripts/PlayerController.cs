@@ -18,13 +18,13 @@ public class PlayerController : MonoBehaviour
     int score = 0, booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
     
     bool boolean1, boolean2;
-    
-    int deathCounter = 0, //variables for stats
+    public int deathCounter = 0, //variables for stats
         highScore = 0, 
         trueCoinsCollected = 0, 
         falseCoinsCollected = 0, 
         andCoinsCollected = 0, 
-        orCoinsCollected = 0; 
+        orCoinsCollected = 0,
+        totalCoinsCollected = 0;
 
     void Start()
     {

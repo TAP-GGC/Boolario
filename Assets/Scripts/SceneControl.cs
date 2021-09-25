@@ -20,4 +20,5 @@ public class MainMenuButtons : MonoBehaviour
     public void SwitchToMenu() {
         SceneManager.LoadScene("MainMenu");
     }
+
 }

@@ -1501,6 +1501,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12867a891cda3d4085a35aa7a3785a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCounter: 0
+  highScore: 0
+  trueCoinsCollected: 0
+  falseCoinsCollected: 0
+  andCoinsCollected: 0
+  orCoinsCollected: 0
+  totalCoinsCollected: 0
 --- !u!1 &1516383536
 GameObject:
   m_ObjectHideFlags: 0
