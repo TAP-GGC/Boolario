@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ladder : MonoBehaviour
 {
     // Start is called before the first frame update
+    public bool isClimbing;
     void Start()
     {
         
