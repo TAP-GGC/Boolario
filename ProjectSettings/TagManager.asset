@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Spike
   - TrueCoin
-  - FalseCoin
   layers:
   - Default
   - TransparentFX
