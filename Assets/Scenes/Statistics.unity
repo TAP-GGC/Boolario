@@ -1413,7 +1413,7 @@ GameObject:
   - component: {fileID: 1258039342}
   - component: {fileID: 1258039341}
   - component: {fileID: 1258039340}
-  - component: {fileID: 1258039344}
+  - component: {fileID: 1258039345}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1502,7 +1502,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1258039344
+--- !u!114 &1258039345
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258039339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5d44f341d75d540b455f60b9a35e36, type: 3}
+  m_Script: {fileID: 11500000, guid: 55b1bea8d19c4d341a818cc901e06668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1267985163
@@ -1525,7 +1525,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1258039344}
+      objectReference: {fileID: 1258039345}
     - target: {fileID: 5598198315048009819, guid: 139efb1ee852ac34eb68fedfd8f14403,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

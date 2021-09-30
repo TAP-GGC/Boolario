@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuButtons : MonoBehaviour
+public class SceneControl : MonoBehaviour
 {
-    void Start() {
-        SceneManager.LoadScene("MainMenu");
-    }
-
     public void SwitchToGame() {
         SceneManager.LoadScene("SampleScene");
     }
@@ -17,8 +13,11 @@ public class MainMenuButtons : MonoBehaviour
         SceneManager.LoadScene("Statistics");
     }
 
-    public void SwitchToMenu() {
+    public void SwitchToMainMenu() {
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void SwitchToInstructions() {
+        SceneManager.LoadScene("Instructions");
+    }
 }
