@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     int score = 0, booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
     
     bool boolean1, boolean2;
-    public int deathCounter = 0, //variables for stats
+    public static int deathCounter = 0, //variables for stats...do not change name or modifiers without changing Stats script
         highScore = 0, 
         trueCoinsCollected = 0, 
         falseCoinsCollected = 0, 
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
         
         if (Input.GetButtonDown("Jump") && myJumpCheck.isGrounded) {
-            myBod.velocity = new Vector2(myBod.velocity.x, 10);
+            myBod.velocity = new Vector2(myBod.velocity.x, 15);
         }
         
         //USE IF STATEMENTS and the SpriteRenderer component to flip X Mario when he moves left.
