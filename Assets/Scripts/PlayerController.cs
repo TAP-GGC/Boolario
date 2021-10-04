@@ -7,16 +7,15 @@ public class PlayerController : MonoBehaviour
 {
 
     // Start is called before the first frame update
-    Rigidbody2D myBod;
+    public Rigidbody2D myBod;
     SpriteRenderer myRend;
-    Animator myAnim;
+    Animator myAnim; //THIS BS ISN'T RUNNING IUGILBKJ:NLKMLOW
 
-    Transform camTran;
 
     JumpCheck myJumpCheck;
-    Text scoreDisplay, logicDisplay, lastbooleanDisplay;
+    Text scoreDisplay, logicDisplay; //lastbooleanDisplay;
     int score = 0, booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
-    
+
     bool boolean1, boolean2;
     public static int deathCounter = 0, //variables for stats...do not change name or modifiers without changing Stats script
         highScore = 0, 
@@ -26,24 +25,28 @@ public class PlayerController : MonoBehaviour
         orCoinsCollected = 0,
         totalCoinsCollected = 0;
 
+    SceneControl scene;
+
     void Start()
     {
+        myBod = GetComponent<Rigidbody2D>();
         scoreDisplay = GameObject.Find("Score").GetComponent<Text>();
         logicDisplay = GameObject.Find("Logic").GetComponent<Text>();
-        lastbooleanDisplay = GameObject.Find("LastBooleanCollected").GetComponent<Text>();
+        //lastbooleanDisplay = GameObject.Find("LastBooleanCollected").GetComponent<Text>();
+        scene = GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneControl>();
+
+        myBod = GetComponent<Rigidbody2D>();
+        myRend = GetComponent<SpriteRenderer>();
+        myAnim = GetComponent<Animator>();
+        myJumpCheck = GetComponentInChildren<JumpCheck>();
+
 
         booleanTracker = 1;
 
         boolean1 = false;
         boolean2 = false;
         
-        myBod = GetComponent<Rigidbody2D>();
-        myRend = GetComponent<SpriteRenderer>();
-        myAnim = GetComponent<Animator>();
-
-        camTran = GameObject.Find("Main Camera").transform;
-
-        myJumpCheck = GetComponentInChildren<JumpCheck>();
+        
     }
 
     // Update is called once per frame
@@ -89,41 +92,97 @@ public class PlayerController : MonoBehaviour
         4th coin collected - "true"      logic statement - "true AND true"       --> the player gets a point
         */
 
-        /*if(booleanTracker == 1) {
-            if(collision.transform.tag == "TrueCoin"){
-                Destroy(collision.gameObject);
-                boolean1 = true;
-                booleanTracker = 2;
+        //AND Game Mode
+        if (scene.andGameIndicator)
+        {
+            if (booleanTracker == 1)
+            {
+                if (collision.transform.tag == "TrueCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean1 = true;
+                    booleanTracker = 2;
+                }
+                if (collision.transform.tag == "FalseCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean1 = false;
+                }
+                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
+                logicDisplay.text = boolean1 + " AND ...";
             }
-            if(collision.transform.tag == "FalseCoin") {
-                Destroy(collision.gameObject);
+            else
+            {
+                if (collision.transform.tag == "TrueCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean2 = true;
+                    booleanTracker = 1;
+                }
+                if (collision.transform.tag == "FalseCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean2 = false;
+                }
+                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
+                logicDisplay.text = boolean1 + " AND " + boolean2;
+            }
+            if (boolean1 && boolean2)
+            {
+                score++;
                 boolean1 = false;
-            }
-            lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
-            logicDisplay.text = boolean1 + " AND " + boolean2;
-        }
-        else {
-            if(collision.transform.tag == "TrueCoin") {
-                Destroy(collision.gameObject);
-                boolean2 = true;
-                booleanTracker = 1;
-            }
-            if(collision.transform.tag == "FalseCoin") {
-                Destroy(collision.gameObject);
                 boolean2 = false;
+                scoreDisplay.text = "Score: " + score;
+                //lastbooleanDisplay.text = "";
+                //logicDisplay.text = "No Logic Coin Collected";
             }
-            lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
-            logicDisplay.text = boolean1 + " AND " + boolean2;
         }
-        if(boolean1 && boolean2) {
-            score++;
-            boolean1 = false;
-            boolean2 = false;
-            scoreDisplay.text = "Score: " + score;
-            lastbooleanDisplay.text = "";
-            logicDisplay.text = "No Logic Coin Collected";
-        }*/
 
+        else
+        {
+            if (booleanTracker == 1)
+            {
+                if (collision.transform.tag == "TrueCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean1 = true;
+                    booleanTracker = 2;
+                }
+                if (collision.transform.tag == "FalseCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean1 = false;
+                }
+                
+                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
+                logicDisplay.text = boolean1 + " OR ...";
+            }
+            else
+            {
+                if (collision.transform.tag == "TrueCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean2 = true;
+                    booleanTracker = 1;
+                }
+                if (collision.transform.tag == "FalseCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean2 = false;
+                }
+                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
+                logicDisplay.text = boolean1 + " AND " + boolean2;
+            }
+            if (boolean1 || boolean2)
+            {
+                score++;
+                boolean1 = false;
+                boolean2 = false;
+                scoreDisplay.text = "Score: " + score;
+                //lastbooleanDisplay.text = "";
+                //logicDisplay.text = "No Logic Coin Collected";
+            }
+        }
         /*
         OPTION 2 FOR "AND" LOGIC: Each coin the player collects changes the value for the entire statement
         This will be harder for the players...
@@ -172,6 +231,7 @@ public class PlayerController : MonoBehaviour
         //restarts the game if the player collides with a spike        
         if(collision.transform.tag == "Spike") {
             SceneManager.LoadScene("GameOver");
+            Time.timeScale = 0;
             deathCounter++;
 
             if(score > highScore) highScore = score;

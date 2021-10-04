@@ -8,6 +8,7 @@ TagManager:
   - TrueCoin
   - FalseCoin
   - Ladder
+  - SceneController
   layers:
   - Default
   - TransparentFX

@@ -392,6 +392,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 124836077}
     m_Modifications:
+    - target: {fileID: 5598198315048009819, guid: 139efb1ee852ac34eb68fedfd8f14403,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 703236342}
+    - target: {fileID: 5598198315048009819, guid: 139efb1ee852ac34eb68fedfd8f14403,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchToOrGame
+      objectReference: {fileID: 0}
     - target: {fileID: 8413445802376422423, guid: 139efb1ee852ac34eb68fedfd8f14403,
         type: 3}
       propertyPath: m_Name
@@ -400,7 +410,7 @@ PrefabInstance:
     - target: {fileID: 8957089893463195469, guid: 139efb1ee852ac34eb68fedfd8f14403,
         type: 3}
       propertyPath: m_text
-      value: easy mode
+      value: '"or" mode'
       objectReference: {fileID: 0}
     - target: {fileID: 9076864715977797006, guid: 139efb1ee852ac34eb68fedfd8f14403,
         type: 3}
@@ -786,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b1bea8d19c4d341a818cc901e06668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  andGameIndicator: 0
 --- !u!1 &1010708241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1178,7 @@ PrefabInstance:
     - target: {fileID: 5598198315048009819, guid: 139efb1ee852ac34eb68fedfd8f14403,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchToGame
+      value: SwitchToAndGame
       objectReference: {fileID: 0}
     - target: {fileID: 8413445802376422423, guid: 139efb1ee852ac34eb68fedfd8f14403,
         type: 3}
@@ -1177,7 +1188,7 @@ PrefabInstance:
     - target: {fileID: 8957089893463195469, guid: 139efb1ee852ac34eb68fedfd8f14403,
         type: 3}
       propertyPath: m_text
-      value: hard mode
+      value: '"and" mode'
       objectReference: {fileID: 0}
     - target: {fileID: 9076864715977797006, guid: 139efb1ee852ac34eb68fedfd8f14403,
         type: 3}
