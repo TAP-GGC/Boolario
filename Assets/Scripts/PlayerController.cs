@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     public Rigidbody2D myBod;
     SpriteRenderer myRend;
-    Animator myAnim; //THIS BS ISN'T RUNNING IUGILBKJ:NLKMLOW
+    Animator myAnim;
 
     JumpCheck myJumpCheck;
     Text scoreDisplay, logicDisplay; //lastbooleanDisplay;
@@ -25,7 +25,10 @@ public class PlayerController : MonoBehaviour
         totalCoinsCollected = 0;
 
     SceneControl scene;
-
+    Transform player;
+    bool climbing = false;
+    bool climbingUp;
+    BoxCollider2D topLadder;
     void Start()
     {
         myBod = GetComponent<Rigidbody2D>();
@@ -33,11 +36,10 @@ public class PlayerController : MonoBehaviour
         logicDisplay = GameObject.Find("Logic").GetComponent<Text>();
         //lastbooleanDisplay = GameObject.Find("LastBooleanCollected").GetComponent<Text>();
         //scene = GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneControl>();
-
-        myBod = GetComponent<Rigidbody2D>();
         myRend = GetComponent<SpriteRenderer>();
         myAnim = GetComponent<Animator>();
         myJumpCheck = GetComponentInChildren<JumpCheck>();
+        player = GetComponent<Transform>();
 
 
         booleanTracker = 1;
@@ -76,6 +78,14 @@ public class PlayerController : MonoBehaviour
         }
 
         //camTran.position = new Vector3(transform.position.x, transform.position.y, -10);
+        if (climbing && climbingUp) {
+            if(Input.GetKeyDown(KeyCode.W))
+            {
+                Debug.Log("CLIMBING!" + topLadder.transform.position);
+
+                //player.transform.Translate(topLadder.transform.position * Time.deltaTime, Space.World);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -90,9 +100,21 @@ public class PlayerController : MonoBehaviour
         3rd coin collected - "true"      logic statement - "true AND false"
         4th coin collected - "true"      logic statement - "true AND true"       --> the player gets a point
         */
+        if (collision.transform.tag == "ClimbUp")
+        {
+            climbing = true;
+            climbingUp = true;
+            //Debug.Log("CLIMBING!");
+            topLadder = collision.transform.parent.GetChild(1).GetComponent<BoxCollider2D>();
+            //player.transform.position = topLadder.transform.position;
 
+        }
+        else if (collision.transform.tag == "ClimbDown"){
+            climbing = true;
+            climbingUp = false;
+        }
         //AND Game Mode
-        if (SceneControl.andGameIndicator)
+        else if (SceneControl.andGameIndicator)
         {
             if (booleanTracker == 1)
             {
@@ -116,7 +138,7 @@ public class PlayerController : MonoBehaviour
                 {
                     Destroy(collision.gameObject);
                     boolean2 = true;
-                    booleanTracker = 1;
+                    booleanTracker = 3; // 3 allows the points to increase
                 }
                 if (collision.transform.tag == "FalseCoin")
                 {
@@ -126,12 +148,13 @@ public class PlayerController : MonoBehaviour
                 //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
                 logicDisplay.text = boolean1 + " AND " + boolean2;
             }
-            if (boolean1 && boolean2)
+            if (boolean1 && boolean2 && booleanTracker == 3)
             {
                 score++;
                 boolean1 = false;
                 boolean2 = false;
                 scoreDisplay.text = "Score: " + score;
+                booleanTracker = 1;
                 //lastbooleanDisplay.text = "";
                 //logicDisplay.text = "No Logic Coin Collected";
             }
@@ -145,14 +168,13 @@ public class PlayerController : MonoBehaviour
                 {
                     Destroy(collision.gameObject);
                     boolean1 = true;
-                    booleanTracker = 2;
                 }
                 if (collision.transform.tag == "FalseCoin")
                 {
                     Destroy(collision.gameObject);
                     boolean1 = false;
                 }
-                
+                booleanTracker = 2;
                 //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
                 logicDisplay.text = boolean1 + " OR ...";
             }
@@ -162,17 +184,17 @@ public class PlayerController : MonoBehaviour
                 {
                     Destroy(collision.gameObject);
                     boolean2 = true;
-                    booleanTracker = 1;
                 }
                 if (collision.transform.tag == "FalseCoin")
                 {
                     Destroy(collision.gameObject);
                     boolean2 = false;
                 }
+                booleanTracker = 3;
                 //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
-                logicDisplay.text = boolean1 + " AND " + boolean2;
+                logicDisplay.text = boolean1 + " OR " + boolean2;
             }
-            if (boolean1 || boolean2)
+            if ((boolean1 || boolean2) && booleanTracker == 3)
             {
                 score++;
                 boolean1 = false;
@@ -180,6 +202,7 @@ public class PlayerController : MonoBehaviour
                 scoreDisplay.text = "Score: " + score;
                 //lastbooleanDisplay.text = "";
                 //logicDisplay.text = "No Logic Coin Collected";
+                booleanTracker = 1;
             }
         }
         /*

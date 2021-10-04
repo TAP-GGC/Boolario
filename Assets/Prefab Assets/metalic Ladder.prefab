@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6091510253781804801}
   m_Layer: 0
   m_Name: topLadder
-  m_TagString: Untagged
+  m_TagString: ClimbDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 7560029315316289822}
   m_Layer: 0
   m_Name: bottomLadder
-  m_TagString: Untagged
+  m_TagString: ClimbUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

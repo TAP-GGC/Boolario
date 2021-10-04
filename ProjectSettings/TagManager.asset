@@ -9,6 +9,8 @@ TagManager:
   - FalseCoin
   - Ladder
   - SceneController
+  - ClimbUp
+  - ClimbDown
   layers:
   - Default
   - TransparentFX
