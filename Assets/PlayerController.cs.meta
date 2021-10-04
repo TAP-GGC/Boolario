@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: f12867a891cda3d4085a35aa7a3785a2
+=======
+guid: dce1f4dfaf23146159ca9b8804eeb5e2
+>>>>>>> parent of 2c55f1f (modified scene)
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
