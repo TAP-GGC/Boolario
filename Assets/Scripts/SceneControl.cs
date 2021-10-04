@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-    public bool andGameIndicator;
+    public static bool andGameIndicator;
     public void SwitchToAndGame() {
         SceneManager.LoadScene("SampleScene");
         andGameIndicator = true;

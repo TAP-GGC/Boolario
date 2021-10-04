@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer myRend;
     Animator myAnim; //THIS BS ISN'T RUNNING IUGILBKJ:NLKMLOW
 
-
     JumpCheck myJumpCheck;
     Text scoreDisplay, logicDisplay; //lastbooleanDisplay;
     int score = 0, booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
@@ -33,7 +32,7 @@ public class PlayerController : MonoBehaviour
         scoreDisplay = GameObject.Find("Score").GetComponent<Text>();
         logicDisplay = GameObject.Find("Logic").GetComponent<Text>();
         //lastbooleanDisplay = GameObject.Find("LastBooleanCollected").GetComponent<Text>();
-        scene = GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneControl>();
+        //scene = GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneControl>();
 
         myBod = GetComponent<Rigidbody2D>();
         myRend = GetComponent<SpriteRenderer>();
@@ -93,7 +92,7 @@ public class PlayerController : MonoBehaviour
         */
 
         //AND Game Mode
-        if (scene.andGameIndicator)
+        if (SceneControl.andGameIndicator)
         {
             if (booleanTracker == 1)
             {
