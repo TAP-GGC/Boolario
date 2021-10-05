@@ -6,7 +6,7 @@ using TMPro;
 public class Stats : MonoBehaviour
 {
     // Start is called before the first frame update
-    TMP_Text scoreUponDeath, highscoreTrack, deathTrack, trueTrack, falseTrack, totalCoinTrack;
+    TMP_Text highscoreTrack, deathTrack, trueTrack, falseTrack, totalCoinTrack;
     
     void Start()
     {
@@ -15,7 +15,7 @@ public class Stats : MonoBehaviour
         trueTrack = GameObject.Find("TrueCoinsCollected").GetComponent<TMP_Text>();
         falseTrack = GameObject.Find("FalseCoinsCollected").GetComponent<TMP_Text>();
         totalCoinTrack = GameObject.Find("TotalCoinsCollected").GetComponent<TMP_Text>();
-        scoreUponDeath = GameObject.Find("ScoreUponDeath").GetComponent<TMP_Text>();
+        //scoreUponDeath = GameObject.Find("ScoreUponDeath").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -26,6 +26,6 @@ public class Stats : MonoBehaviour
         trueTrack.text =  "Total True Coins Collected: " + PlayerController.trueCoinsCollected;
         falseTrack.text =  "Total False Coins Collected: " + PlayerController.falseCoinsCollected;
         totalCoinTrack.text = "Total Coins Collected: " + PlayerController.totalCoinsCollected;
-        scoreUponDeath.text = "Score\n" + PlayerController.score;
+        //scoreUponDeath.text = "Score\n" + PlayerController.score;
     }
 }
