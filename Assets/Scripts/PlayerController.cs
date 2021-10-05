@@ -54,7 +54,11 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {       
+        if (Input.GetButtonDown("Jump") && JumpCheck.isGrounded) {
+            myBod.velocity = new Vector2(myBod.velocity.x, 12);
+        }
+        
         float h = Input.GetAxisRaw("Horizontal");
         //transform.position += (new Vector3(h, 0, 0)) * Time.deltaTime * 5;
         myBod.velocity = new Vector2(h * 5, myBod.velocity.y); //change x only
@@ -75,7 +79,7 @@ public class PlayerController : MonoBehaviour
             myBod.velocity = new Vector2(myBod.velocity.x, v * 5);
             myBod.gravityScale = 0;
         } else {
-            myBod.gravityScale = 1f;
+            myBod.gravityScale = 2f;
         }
         
         //USE IF STATEMENTS and the SpriteRenderer component to flip X Mario when he moves left.
