@@ -7,55 +7,79 @@ public class PlayerController : MonoBehaviour
 {
 
     // Start is called before the first frame update
-    Rigidbody2D myBod;
+    public Rigidbody2D myBod;
     SpriteRenderer myRend;
     Animator myAnim;
 
-    Transform camTran;
-
     JumpCheck myJumpCheck;
-    Text scoreDisplay, logicDisplay, lastbooleanDisplay;
-    int score = 0, booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
-    
+    Text scoreDisplay, logicDisplay; //lastbooleanDisplay;
+    int booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
+
     bool boolean1, boolean2;
     public static int deathCounter = 0, //variables for stats...do not change name or modifiers without changing Stats script
         highScore = 0, 
         trueCoinsCollected = 0, 
-        falseCoinsCollected = 0, 
-        andCoinsCollected = 0, 
-        orCoinsCollected = 0,
-        totalCoinsCollected = 0;
+        falseCoinsCollected = 0,
+        totalCoinsCollected = 0,
+        score = 0;
 
+    //SceneControl scene;
+    Transform player;
+    //bool climbing = false;
+    //bool climbingUp;
+    public static bool climbing = false;
+    //BoxCollider2D topLadder;
+    public float distance;
+    public LayerMask ladder;
     void Start()
     {
+        myBod = GetComponent<Rigidbody2D>();
         scoreDisplay = GameObject.Find("Score").GetComponent<Text>();
         logicDisplay = GameObject.Find("Logic").GetComponent<Text>();
-        lastbooleanDisplay = GameObject.Find("LastBooleanCollected").GetComponent<Text>();
+        //lastbooleanDisplay = GameObject.Find("LastBooleanCollected").GetComponent<Text>();
+        //scene = GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneControl>();
+        myRend = GetComponent<SpriteRenderer>();
+        myAnim = GetComponent<Animator>();
+        myJumpCheck = GetComponentInChildren<JumpCheck>();
+        player = GetComponent<Transform>();
+
 
         booleanTracker = 1;
 
         boolean1 = false;
         boolean2 = false;
         
-        myBod = GetComponent<Rigidbody2D>();
-        myRend = GetComponent<SpriteRenderer>();
-        myAnim = GetComponent<Animator>();
-
-        camTran = GameObject.Find("Main Camera").transform;
-
-        myJumpCheck = GetComponentInChildren<JumpCheck>();
+        
     }
 
     // Update is called once per frame
     void Update()
-    {
-        float h = Input.GetAxis("Horizontal");
+    {       
+        if (Input.GetButtonDown("Jump") && JumpCheck.isGrounded) {
+            myBod.velocity = new Vector2(myBod.velocity.x, 15f);
+        }
+        
+        float h = Input.GetAxisRaw("Horizontal");
         //transform.position += (new Vector3(h, 0, 0)) * Time.deltaTime * 5;
         myBod.velocity = new Vector2(h * 5, myBod.velocity.y); //change x only
 
-        
-        if (Input.GetButtonDown("Jump") && myJumpCheck.isGrounded) {
-            myBod.velocity = new Vector2(myBod.velocity.x, 15);
+        RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, Vector2.up, distance, ladder);
+
+        if(raycastHit2D.collider != null) {
+            if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || 
+            Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
+                climbing = true;
+            }
+        } else {
+            climbing = false;
+        }
+
+        if(climbing == true && raycastHit2D.collider != null) {
+            float v = Input.GetAxisRaw("Vertical");
+            myBod.velocity = new Vector2(myBod.velocity.x, v * 5);
+            myBod.gravityScale = 0;
+        } else {
+            myBod.gravityScale = 2;
         }
         
         //USE IF STATEMENTS and the SpriteRenderer component to flip X Mario when he moves left.
@@ -74,6 +98,15 @@ public class PlayerController : MonoBehaviour
         }
 
         //camTran.position = new Vector3(transform.position.x, transform.position.y, -10);
+        /*if (climbing && climbingUp) {
+            if(Input.GetKeyDown(KeyCode.W))
+            {
+                Debug.Log("CLIMBING!" + topLadder.transform.position);
+
+                //player.transform.Translate(topLadder.transform.position * Time.deltaTime, Space.World);
+            }
+        }*/
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -88,42 +121,109 @@ public class PlayerController : MonoBehaviour
         3rd coin collected - "true"      logic statement - "true AND false"
         4th coin collected - "true"      logic statement - "true AND true"       --> the player gets a point
         */
-
-        /*if(booleanTracker == 1) {
-            if(collision.transform.tag == "TrueCoin"){
-                Destroy(collision.gameObject);
-                boolean1 = true;
-                booleanTracker = 2;
+        //AND Game Mode
+        if (SceneControl.andGameIndicator)
+        {
+            if (booleanTracker == 1)
+            {
+                if (collision.transform.tag == "TrueCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean1 = true;
+                    booleanTracker = 2;
+                    trueCoinsCollected++;
+                }
+                if (collision.transform.tag == "FalseCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean1 = false;
+                    falseCoinsCollected++;
+                }
+                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
+                logicDisplay.text = boolean1 + " AND ...";
             }
-            if(collision.transform.tag == "FalseCoin") {
-                Destroy(collision.gameObject);
+            else
+            {
+                if (collision.transform.tag == "TrueCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean2 = true;
+                    booleanTracker = 3; // 3 allows the points to increase
+                    trueCoinsCollected++;
+                }
+                if (collision.transform.tag == "FalseCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean2 = false;
+                    falseCoinsCollected++;
+                }
+                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
+                logicDisplay.text = boolean1 + " AND " + boolean2;
+            }
+            if (boolean1 && boolean2 && booleanTracker == 3)
+            {
+                score++;
                 boolean1 = false;
+                boolean2 = false;
+                scoreDisplay.text = "Score: " + score;
+                booleanTracker = 1;
+                //lastbooleanDisplay.text = "";
+                //logicDisplay.text = "No Logic Coin Collected";
             }
-            lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
-            logicDisplay.text = boolean1 + " AND " + boolean2;
         }
-        else {
-            if(collision.transform.tag == "TrueCoin") {
-                Destroy(collision.gameObject);
-                boolean2 = true;
+
+        else
+        {
+            if (booleanTracker == 1)
+            {
+                if (collision.transform.tag == "TrueCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean1 = true;
+                    trueCoinsCollected++;
+                }
+                if (collision.transform.tag == "FalseCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean1 = false;
+                    falseCoinsCollected++;
+                }
+                booleanTracker = 2;
+                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
+                logicDisplay.text = boolean1 + " OR ...";
+            }
+            else
+            {
+                if (collision.transform.tag == "TrueCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean2 = true;
+                    trueCoinsCollected++;
+                }
+                if (collision.transform.tag == "FalseCoin")
+                {
+                    Destroy(collision.gameObject);
+                    boolean2 = false;
+                    falseCoinsCollected++;
+                }
+                booleanTracker = 3;
+                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
+                logicDisplay.text = boolean1 + " OR " + boolean2;
+            }
+
+            if ((boolean1 || boolean2) && booleanTracker == 3)
+            {
+                score++;
+                boolean1 = false;
+                boolean2 = false;
+                scoreDisplay.text = "Score: " + score;
+                //lastbooleanDisplay.text = "";
+                //logicDisplay.text = "No Logic Coin Collected";
                 booleanTracker = 1;
             }
-            if(collision.transform.tag == "FalseCoin") {
-                Destroy(collision.gameObject);
-                boolean2 = false;
-            }
-            lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
-            logicDisplay.text = boolean1 + " AND " + boolean2;
+            
+            totalCoinsCollected = trueCoinsCollected + falseCoinsCollected;
         }
-        if(boolean1 && boolean2) {
-            score++;
-            boolean1 = false;
-            boolean2 = false;
-            scoreDisplay.text = "Score: " + score;
-            lastbooleanDisplay.text = "";
-            logicDisplay.text = "No Logic Coin Collected";
-        }*/
-
         /*
         OPTION 2 FOR "AND" LOGIC: Each coin the player collects changes the value for the entire statement
         This will be harder for the players...
@@ -171,7 +271,8 @@ public class PlayerController : MonoBehaviour
 
         //restarts the game if the player collides with a spike        
         if(collision.transform.tag == "Spike") {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("MainMenu");
+            Time.timeScale = 0;
             deathCounter++;
 
             if(score > highScore) highScore = score;

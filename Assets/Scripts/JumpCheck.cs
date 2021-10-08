@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpCheck : MonoBehaviour
 {
-    public bool isGrounded;
+    public static bool isGrounded;
     Rigidbody2D myBod;
     // Start is called before the first frame update
     void Start()
