@@ -16,15 +16,13 @@ public class PlayerController : MonoBehaviour
     int booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
 
     bool boolean1, boolean2;
-
     public static int deathCounter = 0, //variables for stats...do not change name or modifiers without changing Stats script
         highScore = 0, 
         trueCoinsCollected = 0, 
         falseCoinsCollected = 0,
         totalCoinsCollected = 0,
-        score;
+        score = 0;
 
-    float jumpHeight;
     //SceneControl scene;
     Transform player;
     //bool climbing = false;
@@ -44,8 +42,7 @@ public class PlayerController : MonoBehaviour
         myAnim = GetComponent<Animator>();
         myJumpCheck = GetComponentInChildren<JumpCheck>();
         player = GetComponent<Transform>();
-        score = 0;
-        jumpHeight = 15f;
+
 
         booleanTracker = 1;
 
@@ -59,7 +56,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {       
         if (Input.GetButtonDown("Jump") && JumpCheck.isGrounded) {
-            myBod.velocity = new Vector2(myBod.velocity.x, jumpHeight);
+            myBod.velocity = new Vector2(myBod.velocity.x, 15f);
         }
         
         float h = Input.GetAxisRaw("Horizontal");
@@ -274,12 +271,11 @@ public class PlayerController : MonoBehaviour
 
         //restarts the game if the player collides with a spike        
         if(collision.transform.tag == "Spike") {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("MainMenu");
+            Time.timeScale = 0;
             deathCounter++;
 
-            if(score > highScore) {
-                highScore = score;
-            }
+            if(score > highScore) highScore = score;
         }
     }
 
