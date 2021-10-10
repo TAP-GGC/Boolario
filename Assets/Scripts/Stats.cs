@@ -15,7 +15,6 @@ public class Stats : MonoBehaviour
         trueTrack = GameObject.Find("TrueCoinsCollected").GetComponent<TMP_Text>();
         falseTrack = GameObject.Find("FalseCoinsCollected").GetComponent<TMP_Text>();
         totalCoinTrack = GameObject.Find("TotalCoinsCollected").GetComponent<TMP_Text>();
-        //scoreUponDeath = GameObject.Find("ScoreUponDeath").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -26,6 +25,5 @@ public class Stats : MonoBehaviour
         trueTrack.text =  "Total True Coins Collected: " + PlayerController.trueCoinsCollected;
         falseTrack.text =  "Total False Coins Collected: " + PlayerController.falseCoinsCollected;
         totalCoinTrack.text = "Total Coins Collected: " + PlayerController.totalCoinsCollected;
-        //scoreUponDeath.text = "Score\n" + PlayerController.score;
     }
 }

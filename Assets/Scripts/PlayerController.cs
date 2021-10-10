@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         trueCoinsCollected = 0, 
         falseCoinsCollected = 0,
         totalCoinsCollected = 0,
-        score = 0;
+        score;
 
     //SceneControl scene;
     Transform player;
@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
         boolean1 = false;
         boolean2 = false;
+
+        score = 0;
         
         
     }
@@ -221,9 +223,8 @@ public class PlayerController : MonoBehaviour
                 //logicDisplay.text = "No Logic Coin Collected";
                 booleanTracker = 1;
             }
-            
-            totalCoinsCollected = trueCoinsCollected + falseCoinsCollected;
         }
+        totalCoinsCollected = trueCoinsCollected + falseCoinsCollected;
         /*
         OPTION 2 FOR "AND" LOGIC: Each coin the player collects changes the value for the entire statement
         This will be harder for the players...
@@ -271,11 +272,12 @@ public class PlayerController : MonoBehaviour
 
         //restarts the game if the player collides with a spike        
         if(collision.transform.tag == "Spike") {
-            SceneManager.LoadScene("MainMenu");
-            Time.timeScale = 0;
+            SceneManager.LoadScene("GameOver");
             deathCounter++;
 
-            if(score > highScore) highScore = score;
+            if(score > highScore) {
+                highScore = score;
+            }
         }
     }
 
