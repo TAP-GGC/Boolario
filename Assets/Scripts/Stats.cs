@@ -19,8 +19,8 @@ public class Stats : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+    
         highscoreTrack.text =  "" + PlayerController.highScore;
         deathTrack.text =  "Total Deaths: " + PlayerController.deathCounter;
         trueTrack.text =  "Total True Coins Collected: " + PlayerController.trueCoinsCollected;

@@ -5,4 +5,13 @@ using TMPro;
 
 public class ScoreUponDeath : MonoBehaviour
 {
+    TMP_Text score;
+
+    void Start() {
+        score = GameObject.Find("ScoreUponDeath").GetComponent<TMP_Text>();
+    }
+
+    void Update() {
+       score.text = "Score:\n" + PlayerController.score;
+    }
 }
