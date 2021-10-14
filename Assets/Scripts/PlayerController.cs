@@ -10,10 +10,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D myBod;
     SpriteRenderer myRend;
     Animator myAnim;
-
-    JumpCheck myJumpCheck;
     Text scoreDisplay, logicDisplay; //lastbooleanDisplay;
-    int booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
+    public int booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
 
     bool boolean1, boolean2;
     public static int deathCounter = 0, //variables for stats...do not change name or modifiers without changing Stats script
@@ -24,13 +22,13 @@ public class PlayerController : MonoBehaviour
         score;
 
     //SceneControl scene;
-    Transform player;
     //bool climbing = false;
     //bool climbingUp;
     public static bool climbing = false;
     //BoxCollider2D topLadder;
     public float distance;
     public LayerMask ladder;
+    bool bothCoinsGained = false;
     void Start()
     {
         myBod = GetComponent<Rigidbody2D>();
@@ -40,8 +38,6 @@ public class PlayerController : MonoBehaviour
         //scene = GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneControl>();
         myRend = GetComponent<SpriteRenderer>();
         myAnim = GetComponent<Animator>();
-        myJumpCheck = GetComponentInChildren<JumpCheck>();
-        player = GetComponent<Transform>();
 
 
         booleanTracker = 1;
@@ -132,7 +128,6 @@ public class PlayerController : MonoBehaviour
                 {
                     Destroy(collision.gameObject);
                     boolean1 = true;
-                    booleanTracker = 2;
                     trueCoinsCollected++;
                 }
                 if (collision.transform.tag == "FalseCoin")
@@ -141,8 +136,14 @@ public class PlayerController : MonoBehaviour
                     boolean1 = false;
                     falseCoinsCollected++;
                 }
-                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
-                logicDisplay.text = boolean1 + " AND ...";
+
+                //if player collects any coin, advance the boolean tracker and change text
+                if (collision.transform.tag == "TrueCoin" || collision.transform.tag == "FalseCoin")
+                {
+                    //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
+                    logicDisplay.text = boolean1 + " AND ...";
+                    booleanTracker = 2;
+                }
             }
             else
             {
@@ -150,7 +151,6 @@ public class PlayerController : MonoBehaviour
                 {
                     Destroy(collision.gameObject);
                     boolean2 = true;
-                    booleanTracker = 3; // 3 allows the points to increase
                     trueCoinsCollected++;
                 }
                 if (collision.transform.tag == "FalseCoin")
@@ -159,8 +159,13 @@ public class PlayerController : MonoBehaviour
                     boolean2 = false;
                     falseCoinsCollected++;
                 }
-                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
-                logicDisplay.text = boolean1 + " AND " + boolean2;
+                if (collision.transform.tag == "TrueCoin" || collision.transform.tag == "FalseCoin")
+                {
+                    //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
+                    logicDisplay.text = boolean1 + " AND " + boolean2;
+                    booleanTracker = 3; // 3 allows the points to increase
+                    bothCoinsGained = true;
+                }
             }
             if (boolean1 && boolean2 && booleanTracker == 3)
             {
@@ -168,12 +173,17 @@ public class PlayerController : MonoBehaviour
                 boolean1 = false;
                 boolean2 = false;
                 scoreDisplay.text = "Score: " + score;
-                booleanTracker = 1;
                 //lastbooleanDisplay.text = "";
                 //logicDisplay.text = "No Logic Coin Collected";
             }
+            if (booleanTracker == 3 && bothCoinsGained) //reset boolean tracker after
+            {
+                booleanTracker = 1;
+                bothCoinsGained = false;
+            }
         }
 
+        //OR Game Mode
         else
         {
             if (booleanTracker == 1)
@@ -190,9 +200,12 @@ public class PlayerController : MonoBehaviour
                     boolean1 = false;
                     falseCoinsCollected++;
                 }
-                booleanTracker = 2;
-                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
-                logicDisplay.text = boolean1 + " OR ...";
+                if (collision.transform.tag == "TrueCoin" || collision.transform.tag == "FalseCoin")
+                {
+                    booleanTracker = 2;
+                    //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
+                    logicDisplay.text = boolean1 + " OR ...";
+                }
             }
             else
             {
@@ -208,9 +221,13 @@ public class PlayerController : MonoBehaviour
                     boolean2 = false;
                     falseCoinsCollected++;
                 }
-                booleanTracker = 3;
-                //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
-                logicDisplay.text = boolean1 + " OR " + boolean2;
+                if (collision.transform.tag == "TrueCoin" || collision.transform.tag == "FalseCoin")
+                {
+                    booleanTracker = 3;
+                    //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
+                    logicDisplay.text = boolean1 + " OR " + boolean2;
+                    bothCoinsGained = true;
+                }
             }
 
             if ((boolean1 || boolean2) && booleanTracker == 3)
@@ -221,7 +238,11 @@ public class PlayerController : MonoBehaviour
                 scoreDisplay.text = "Score: " + score;
                 //lastbooleanDisplay.text = "";
                 //logicDisplay.text = "No Logic Coin Collected";
+            }
+            if (booleanTracker == 3 && bothCoinsGained) //reset boolean tracker after
+            {
                 booleanTracker = 1;
+                bothCoinsGained = false;
             }
         }
         totalCoinsCollected = trueCoinsCollected + falseCoinsCollected;
