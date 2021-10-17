@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SceneControl : MonoBehaviour
 {
     public static bool andGameIndicator;
+    public void SwitchToLogicDescription() {
+        SceneManager.LoadScene("LogicDescription");
+        Time.timeScale = 0;
+    }
     public void SwitchToAndGame() {
         SceneManager.LoadScene("SampleScene");
         andGameIndicator = true;
@@ -29,8 +34,18 @@ public class SceneControl : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void SwitchToInstructions() {
-        SceneManager.LoadScene("Instructions");
+    public void SwitchToInstructionMenu() {
+        SceneManager.LoadScene("InstructionsMenu");
+        Time.timeScale = 0;
+    }
+
+    public void SwitchToGameplayInstructions() {
+        SceneManager.LoadScene("GameplayInstructions");
+        Time.timeScale = 0;
+    }
+
+    public void SwitchToKeybindingsInstructions() {
+        SceneManager.LoadScene("Keybindings");
         Time.timeScale = 0;
     }
 }

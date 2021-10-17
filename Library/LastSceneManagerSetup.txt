@@ -1,9 +1,33 @@
 sceneSetups:
-- path: Assets/Scenes/GameOver.unity
+- path: Assets/Scenes/Main Menu/Instructions/GameplayInstructions.unity
   isLoaded: 1
   isActive: 0
   isSubScene: 0
-- path: Assets/Scenes/SampleScene.unity
+- path: Assets/Scenes/Main Menu/Instructions/Keybindings.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main Menu/MainMenu.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main Menu/Statistics/Statistics.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Game/GameOver.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main Menu/Instructions/LogicDescription.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Game/SampleScene.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main Menu/Instructions/InstructionsMenu.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
