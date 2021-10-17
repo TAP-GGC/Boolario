@@ -1,3 +1,7 @@
+/// <summary>Class <c>PlayerController</c> controls how the environment 
+/// interacts with the player</summary>
+///
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +9,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
-
-    // Start is called before the first frame update
     public Rigidbody2D myBod;
     SpriteRenderer myRend;
     Animator myAnim;
-    Text scoreDisplay, logicDisplay; //lastbooleanDisplay;
-    public int booleanTracker; //booleanTracker keeps track of which side of the boolean the player is working on
+    Text scoreDisplay, logicDisplay; 
+    public int booleanTracker; 
 
     bool boolean1, boolean2;
     public static int deathCounter = 0, //variables for stats...do not change name or modifiers without changing Stats script
@@ -20,47 +22,63 @@ public class PlayerController : MonoBehaviour
         falseCoinsCollected = 0,
         totalCoinsCollected = 0,
         score;
-
-    //SceneControl scene;
-    //bool climbing = false;
-    //bool climbingUp;
     public static bool climbing = false;
-    //BoxCollider2D topLadder;
     public float distance;
     public LayerMask ladder;
     bool bothCoinsGained = false;
     void Start()
     {
         myBod = GetComponent<Rigidbody2D>();
-        scoreDisplay = GameObject.Find("Score").GetComponent<Text>();
-        logicDisplay = GameObject.Find("Logic").GetComponent<Text>();
-        //lastbooleanDisplay = GameObject.Find("LastBooleanCollected").GetComponent<Text>();
-        //scene = GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneControl>();
         myRend = GetComponent<SpriteRenderer>();
         myAnim = GetComponent<Animator>();
 
+        scoreDisplay = GameObject.Find("Score").GetComponent<Text>();
+        logicDisplay = GameObject.Find("Logic").GetComponent<Text>();
 
+        score = 0;
         booleanTracker = 1;
 
         boolean1 = false;
         boolean2 = false;
-
-        score = 0;
-        
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {       
+
+/// <summary>This method will allow the player to jump upwards when 
+/// the user presses the spacebar.
+/// </summary>
+    private void Jump() {
         if (Input.GetButtonDown("Jump") && JumpCheck.isGrounded) {
             myBod.velocity = new Vector2(myBod.velocity.x, 15f);
         }
-        
-        float h = Input.GetAxisRaw("Horizontal");
-        //transform.position += (new Vector3(h, 0, 0)) * Time.deltaTime * 5;
-        myBod.velocity = new Vector2(h * 5, myBod.velocity.y); //change x only
+    }
 
+
+/// <summary>This method will allow the player to move left and right
+/// when the user presses the left or right arrow keys, 'A', or 'D'
+/// </summary>
+    private void Walk() {
+        float h = Input.GetAxisRaw("Horizontal");
+        myBod.velocity = new Vector2(h * 5, myBod.velocity.y);
+
+        if(h < 0) {
+            myRend.flipX = true;
+            myAnim.SetBool("RUN", true);
+        }
+        else if(h > 0) {
+            myRend.flipX = false;
+            myAnim.SetBool("RUN", true);
+        }
+        else {
+            myAnim.SetBool("RUN", false);
+        }
+    }
+
+
+/// <summary>This method will allow the player to climb up and down 
+/// ladders when they collide with <c>ladder.prefab</c>
+/// </summary>
+
+    private void Climb() {
         RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, Vector2.up, distance, ladder);
 
         if(raycastHit2D.collider != null) {
@@ -68,7 +86,8 @@ public class PlayerController : MonoBehaviour
             Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
                 climbing = true;
             }
-        } else {
+        } 
+        else {
             climbing = false;
         }
 
@@ -76,50 +95,32 @@ public class PlayerController : MonoBehaviour
             float v = Input.GetAxisRaw("Vertical");
             myBod.velocity = new Vector2(myBod.velocity.x, v * 5);
             myBod.gravityScale = 0;
-        } else {
+        } 
+        else {
             myBod.gravityScale = 2;
         }
-        
-        //USE IF STATEMENTS and the SpriteRenderer component to flip X Mario when he moves left.
-        if(h < 0) {
-            myRend.flipX = true;
-            myAnim.SetBool("RUN", true);
-        }
-
-        else if(h > 0) {
-            myRend.flipX = false;
-            myAnim.SetBool("RUN", true);
-        }
-
-        else {
-            myAnim.SetBool("RUN", false);
-        }
-
-        //camTran.position = new Vector3(transform.position.x, transform.position.y, -10);
-        /*if (climbing && climbingUp) {
-            if(Input.GetKeyDown(KeyCode.W))
-            {
-                Debug.Log("CLIMBING!" + topLadder.transform.position);
-
-                //player.transform.Translate(topLadder.transform.position * Time.deltaTime, Space.World);
-            }
-        }*/
-
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
 
-        /*
-        OPTION 1 FOR "AND" LOGIC: The player cannot collect boolean values for the right side until the left is true
-        This is easier for the player...
-        (ex) 
-        The default value for the statement is: "false AND false"
-        1st coin collected - "false"     logic statement - "false AND false"
-        2nd coin collected - "false"     logic statement - "false AND false"
-        3rd coin collected - "true"      logic statement - "true AND false"
-        4th coin collected - "true"      logic statement - "true AND true"       --> the player gets a point
-        */
-        //AND Game Mode
+/// <summary>This method will give the player movement controls by
+/// implementing the <c>Walk()</c>, <c>Jump()</c>, and <c>Climb()</c>
+/// methods.
+/// </summary>
+
+    private void TransformPlayer() {
+        Walk();
+        Jump();
+        Climb();
+    }
+
+
+    /// <summary>This method will control which game mode will load
+    /// and what will occur when the player forms a <paramref name="collision"/> 
+    /// with the coins based on the player's selection in <c>MainMenu.unity</c>.
+    /// </summary>
+    /// <param name="collision">trigger collider when an object collides with it</param>
+
+    private void ControlGameMode(Collider2D collision) {
         if (SceneControl.andGameIndicator)
         {
             if (booleanTracker == 1)
@@ -136,11 +137,8 @@ public class PlayerController : MonoBehaviour
                     boolean1 = false;
                     falseCoinsCollected++;
                 }
-
-                //if player collects any coin, advance the boolean tracker and change text
                 if (collision.transform.tag == "TrueCoin" || collision.transform.tag == "FalseCoin")
                 {
-                    //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
                     logicDisplay.text = boolean1 + " AND ...";
                     booleanTracker = 2;
                 }
@@ -161,9 +159,8 @@ public class PlayerController : MonoBehaviour
                 }
                 if (collision.transform.tag == "TrueCoin" || collision.transform.tag == "FalseCoin")
                 {
-                    //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
                     logicDisplay.text = boolean1 + " AND " + boolean2;
-                    booleanTracker = 3; // 3 allows the points to increase
+                    booleanTracker = 3;
                     bothCoinsGained = true;
                 }
             }
@@ -173,17 +170,13 @@ public class PlayerController : MonoBehaviour
                 boolean1 = false;
                 boolean2 = false;
                 scoreDisplay.text = "Score: " + score;
-                //lastbooleanDisplay.text = "";
-                //logicDisplay.text = "No Logic Coin Collected";
             }
-            if (booleanTracker == 3 && bothCoinsGained) //reset boolean tracker after
+            if (booleanTracker == 3 && bothCoinsGained)
             {
                 booleanTracker = 1;
                 bothCoinsGained = false;
             }
         }
-
-        //OR Game Mode
         else
         {
             if (booleanTracker == 1)
@@ -203,7 +196,6 @@ public class PlayerController : MonoBehaviour
                 if (collision.transform.tag == "TrueCoin" || collision.transform.tag == "FalseCoin")
                 {
                     booleanTracker = 2;
-                    //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
                     logicDisplay.text = boolean1 + " OR ...";
                 }
             }
@@ -224,7 +216,6 @@ public class PlayerController : MonoBehaviour
                 if (collision.transform.tag == "TrueCoin" || collision.transform.tag == "FalseCoin")
                 {
                     booleanTracker = 3;
-                    //lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
                     logicDisplay.text = boolean1 + " OR " + boolean2;
                     bothCoinsGained = true;
                 }
@@ -236,62 +227,23 @@ public class PlayerController : MonoBehaviour
                 boolean1 = false;
                 boolean2 = false;
                 scoreDisplay.text = "Score: " + score;
-                //lastbooleanDisplay.text = "";
-                //logicDisplay.text = "No Logic Coin Collected";
             }
-            if (booleanTracker == 3 && bothCoinsGained) //reset boolean tracker after
+            if (booleanTracker == 3 && bothCoinsGained)
             {
                 booleanTracker = 1;
                 bothCoinsGained = false;
             }
         }
         totalCoinsCollected = trueCoinsCollected + falseCoinsCollected;
-        /*
-        OPTION 2 FOR "AND" LOGIC: Each coin the player collects changes the value for the entire statement
-        This will be harder for the players...
-        (ex) 
-        The default value for the statement is: "false AND false"
-        1st coin collected - "false"     logic statement - "false AND false"
-        2nd coin collected - "true"      logic statement - "false AND true"
-        3rd coin collected - "true"      logic statement - "true AND true"    --> the player gets a point*/
+    }
+    
 
-        /*if(booleanTracker == 1) {
-            if(collision.transform.tag == "TrueCoin"){
-                Destroy(collision.gameObject);
-                boolean1 = true;
-            }
-            if(collision.transform.tag == "FalseCoin") {
-                Destroy(collision.gameObject);
-                boolean1 = false;
-            }
-            booleanTracker = 2;
-            lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean1;
-            logicDisplay.text = boolean1 + " AND " + boolean2;
-        }
-        else {
-            if(collision.transform.tag == "TrueCoin") {
-                Destroy(collision.gameObject);
-                boolean2 = true;
-            }
-            if(collision.transform.tag == "FalseCoin") {
-                Destroy(collision.gameObject);
-                boolean2 = false;
-            }
-            booleanTracker = 1;
-            lastbooleanDisplay.text = "Last Logic Coin Collected: " + boolean2;
-            logicDisplay.text = boolean1 + " AND " + boolean2;
-        }
-        if(boolean1 && boolean2) {
-            score++;
-            boolean1 = false;
-            boolean2 = false;
-            scoreDisplay.text = "Score: " + score;
-            lastbooleanDisplay.text = "";
-            logicDisplay.text = "No Logic Coin Collected";
-        }
-        */
-
-        //restarts the game if the player collides with a spike        
+    /// <summary>This method will load <c>GameOver.unity</c> when the player
+    /// forms a <paramref name="collision"/> with <c>Spike.prefab</c>
+    /// </summary>
+    /// <param name="collision">trigger collider when an object collides with it</param>
+    
+    private void DeathUponImpact(Collider2D collision) {
         if(collision.transform.tag == "Spike") {
             SceneManager.LoadScene("GameOver");
             deathCounter++;
@@ -300,6 +252,16 @@ public class PlayerController : MonoBehaviour
                 highScore = score;
             }
         }
+    }
+    
+    void Update()
+    {      
+        TransformPlayer();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        ControlGameMode(collision);
+        DeathUponImpact(collision);
     }
 
 }

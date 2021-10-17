@@ -1,3 +1,7 @@
+/// <summary>Class <c>Stats</c> documents players' gameplay statistics on the
+/// <c>Statistics.unity</c> scene</summary>
+///
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +9,6 @@ using TMPro;
 
 public class Stats : MonoBehaviour
 {
-    // Start is called before the first frame update
     TMP_Text highscoreTrack, deathTrack, trueTrack, falseTrack, totalCoinTrack;
     
     void Start()
@@ -16,8 +19,6 @@ public class Stats : MonoBehaviour
         falseTrack = GameObject.Find("FalseCoinsCollected").GetComponent<TMP_Text>();
         totalCoinTrack = GameObject.Find("TotalCoinsCollected").GetComponent<TMP_Text>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         highscoreTrack.text =  "" + PlayerController.highScore;

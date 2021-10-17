@@ -12,7 +12,6 @@ public class ScoreUponDeath : MonoBehaviour
         score = GameObject.Find("ScoreUponDeath").GetComponent<TMP_Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         score.text =  "Score:\n" + PlayerController.score;
