@@ -6,17 +6,14 @@ public class JumpCheck : MonoBehaviour
 {
     public static bool isGrounded;
     Rigidbody2D myBod;
-    // Start is called before the first frame update
     void Start()
     {
         myBod = GameObject.Find("Boolrio").GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float h = Input.GetAxis("Horizontal");
-        //transform.position += (new Vector3(h, 0, 0)) * Time.deltaTime * 5;
         myBod.velocity = new Vector3(h * 5, myBod.velocity.y, 0); //change x only
 
         
