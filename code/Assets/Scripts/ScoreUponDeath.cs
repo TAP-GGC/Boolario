@@ -14,6 +14,6 @@ public class ScoreUponDeath : MonoBehaviour
 
     void Update()
     {
-        score.text =  "Score:\n" + PlayerController.score;
+        score.text =  "" + PlayerController.score;
     }
 }
