@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Library/PackageCache/com.unity.ide.visualstudio@2.0.11/Editor/COMIntegration/COMIntegration~/dte80a.tlh.meta
 guid: 97115cd910ade104a9d05d65a6b6b7d9
+=======
+guid: d95aba366a2e006498bfc18173d1197b
+>>>>>>> e1e61a82c1a3df6fbc1db174fc0a0a68f72b5bec:code/Assets/Scenes/Main Menu/GameSelection.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
