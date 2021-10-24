@@ -9,24 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu/MainMenu.unity
     guid: 4e4f9f23466f5d941ba3ac26e66676a9
   - enabled: 1
-    path: Assets/Scenes/Main Menu/Instructions/HowToPlay.unity
-    guid: b332dc27a7ecf4b4485b2b4121fb8c19
-  - enabled: 1
-    path: Assets/Scenes/Main Menu/Statistics/Statistics.unity
-    guid: e9e486ea4ecf732438bbc272ef99ab1b
+    path: Assets/Scenes/Main Menu/GameSelection.unity
+    guid: d95aba366a2e006498bfc18173d1197b
   - enabled: 1
     path: Assets/Scenes/Game/SampleScene.unity
     guid: 106749c8de4d8e342b6ee15d601ae953
   - enabled: 1
+    path: Assets/Scenes/Main Menu/Statistics/Statistics.unity
+    guid: e9e486ea4ecf732438bbc272ef99ab1b
+  - enabled: 1
     path: Assets/Scenes/Game/GameOver.unity
     guid: 28c3b39de9fcf6547b4fa4bb2ba80ead
   - enabled: 1
-    path: Assets/Scenes/Main Menu/Instructions/Controls.unity
-    guid: 2455f235ec7793942b6d9d8b32e3f245
+    path: Assets/Scenes/Main Menu/Instructions/HowToPlay.unity
+    guid: b332dc27a7ecf4b4485b2b4121fb8c19
   - enabled: 1
     path: Assets/Scenes/Main Menu/Instructions/HowToScore.unity
     guid: 24b145eff5aabae489d7e0ebe371b961
   - enabled: 1
-    path: Assets/Scenes/Main Menu/GameSelection.unity
-    guid: d95aba366a2e006498bfc18173d1197b
+    path: Assets/Scenes/Main Menu/Instructions/Controls.unity
+    guid: 2455f235ec7793942b6d9d8b32e3f245
   m_configObjects: {}
