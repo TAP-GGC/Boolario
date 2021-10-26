@@ -26,7 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu/Instructions/HowToScore.unity
     guid: 24b145eff5aabae489d7e0ebe371b961
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Main Menu/GameSelection.unity
-    guid: d95aba366a2e006498bfc18173d1197b
+    guid: 97115cd910ade104a9d05d65a6b6b7d9
   m_configObjects: {}
