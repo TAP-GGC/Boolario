@@ -11,7 +11,7 @@ Boolario is a Mario parody minigame that uses Unity to teach others about game d
 - Khamilah Nixon
 - Anya Solodky 
 - Austin Mathews
-[team photo]
+<img src="https://user-images.githubusercontent.com/72395832/138807313-b1fd609d-6b91-4bb0-86db-5d19b8002ed5.jpg" width="500"/>
 
 ### Advisers
 - Dr. Cengiz Gunay
@@ -38,7 +38,7 @@ Our workshop goals consist of introducing concepts of game development to our au
 For this program, our team used [Makey Makey](https://unity.com/), a device that changes a conductor into a source of computer input, and [Unity](https://makeymakey.com/), a 2D and 3D game engine.
 [image of unity and makey makey]
 
-### Required:
+
 - Visual Studio or Visual Studio Code
 - Unity
 - Sprite creation software
