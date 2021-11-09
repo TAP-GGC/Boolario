@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam-cell.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"6eae353a0d",applicationID:"20127417"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1211.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="csrf-token" content="3mYhB0nUKNVrD8jj5ZtfQowK8Xgpy6UMAPbbKttA">
+<title>Pixilart - Free Online Art Community and Pixel Art Tool</title>
+<meta name="description" content="Pixilart, free online drawing editor and social platform for all ages. Create game sprites, make pixel art, animated GIFs, share artwork and socialize online.">
+<meta property="og:description" content="Pixilart, free online drawing editor and social platform for all ages. Create game sprites, make pixel art, animated GIFs, share artwork and socialize online." />
+<link rel="canonical" href="http://www.pixilart.com" itemprop="url">
+<meta name="keywords" content="pixilart, pixelart, pixel art, pixel, art, drawing, pixel drawing, online drawing, pixel drawing online, make pixel art, make pixil art, pixil, social pixel">
+<meta name="copyright" content="Copyright 2021 Pixilart, LLC">
+
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,900" rel="stylesheet">
+<link href="/css/font-feather.css?v=1.1" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@pixil_art">
+
+<meta property="og:image" content="https://cdn.pixil.digital/public/share/share-image-2.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:title" content="Pixilart - Share & Create Art Online" />
+
+<meta property="fb:app_id" content="421508937871104" />
+<meta property="og:url" content="https://www.pixilart.com" />
+<meta property="og:type" content="application" />
+<meta property="og:site_name" content="Pixilart" />
+<meta property="fb:admins" content="244937025609196" />
+
+<meta name="tz" content="2021-11-09 18:03:28">
+<meta name="is_restricted" content='1'>
+<meta name="user_meta" content='{"first_name":"","last_name":"","username":"Anonymous","profile_picture":"\/images\/user\/default_profile.png?ver=2.1","is_anon":true,"is_online":1478714608}'>
+<meta name="check_logged_in" content="">
+
+
+
+<script type="text/javascript">
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+	document,'script','https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '958285151632101'); // Insert your pixel ID here.
+	fbq('track', 'PageView');
+	</script>
+<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=958285151632101&ev=PageView&noscript=1"
+	/></noscript>
+<script type="text/javascript">
+	// Google Anayltics
+	function gaA(id) {
+	    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	    ga('create', id, 'auto');
+	    ga('send', 'pageview');
+	}
+
+	window.gaTrack = function(path, title) {
+	    ga('set', { page: path, title: title });
+	    ga('send', 'pageview');
+	}
+
+	gaA('UA-40962823-3');
+</script>
+<script src="/js/pixshop.js?v=1.5.2.4.4" defer></script>
+<script src="/js/app.js?v=1.5.1.1.0.9.1" defer></script>
+
+<script src="//www.google-analytics.com/analytics.js"></script>
+<script type="text/javascript">
+var tyche = { 
+    mode: "tyche", 
+    config: "//config.playwire.com/1024450/v2/websites/73196/banner.json",
+    passiveMode: true, 
+};
+</script>
+<script id="tyche" async src="//cdn.intergient.com/pageos/pageos.js" type="text/javascript"></script> <link href="/css/app.css?ver=1.8.4.4.3" rel="stylesheet">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=gw6qNMPWjl2">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=gw6qNMPWjl2">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=gw6qNMPWjl2">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png?v=gw6qNMPWjl2">
+<link rel="manifest" href="/manifest.json?v=gw6qNMPWjl5">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg?v=gw6qNMPWjl2" color="#e74d3c">
+<meta name="apple-mobile-web-app-title" content="Pixilart">
+<meta name="application-name" content="Pixilart">
+<meta name="theme-color" content="#FFFFFF">
+<script>
+        var _cdn = 'https://cdn.pixil.digital'; //https://cdn.pixilart.com';
+        var _cdn_art = 'https://art.pixilart.com'; //'https://art.pixilart.com';
+        var do_cdn = 'https://pixil.nyc3.digitaloceanspaces.com'; // 'https://pixil.nyc3.digitaloceanspaces.com'
+    </script>
+<meta name="google-site-verification" content="XLfESLCOwTg9ekpy5ozJHe2ooDxloKDFiSc5xeeheJo" />
+<meta name="msvalidate.01" content="F66B99A94EB4AB287B2EFFB912F599AB" />
+<script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Website",
+          "name": "Pixilart",
+          "url": "http://www.pixilart.com",
+          "sameAs": [
+            "https://www.facebook.com/pixilart",
+            "https://www.instagram.com/pixilart",
+            "https://www.twitter.com/pixil_art"
+          ],
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.pixilart.com/search?term={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+    </script>
+</head><body class="wh  page-layout sliding-navbar">
+<div id="app">
+<nav class="navbar d-block navbar-light fixed-top p-0">
+<div class="navbar-custom nav-left-fixed navbar-expand-md nobs brb">
+<div class="container max text-center d-flex align-items-center">
+<div class="left full d-flex">
+<button class="home-nav-btn btn btn-light btn-menu btnov mr-3" type="button">
+<i class="ft ft-icon-menu" aria-hidden="true"></i>
+</button>
+<ul class="navbar-nav lf m-full left-align d-flex align-items-center justify-content-center justify-content-md-left">
+<li class="nav-item nav-icon-inline mr-0 mr-md-4">
+<a class="navbar-brand mr-0" href="/">
+<img src="/images/public/logo_pixilart_simple_black.png?Ver=1.1" alt="Pixilart" class="pp" />
+</a>
+</li>
+</ul>
+<navbar-search class="nav-search-wrapper"></navbar-search>
+<button class="btn btn-light search-nav-btn btn-menu btnov ml-3 d-md-none" type="button">
+<i class="ft ft-icon-search" aria-hidden="true"></i>
+</button>
+</div>
+<div class="center full d-none d-lg-flex justify-content-center">
+<ul class="navbar-nav rt right-align">
+<li class="nav-item nav-icon-inline hide-tb  active ">
+<a href="/" class="nav-link">
+<i class="ic_a home" aria-hidden="true"></i> <span class="f-sm ttu item-text">Home</span>
+</a>
+</li>
+<li class="nav-item nav-icon-inline hide-tb ">
+<a href="/gallery" class="nav-link">
+<i class="ic_a explore" aria-hidden="true"></i> <span class="f-sm ttu item-text">Gallery</span>
+</a>
+</li>
+<li class="nav-item nav-icon-inline hide-tb ">
+<a href="/comics" class="nav-link">
+<i class="ic_a comics" aria-hidden="true"></i> <span class="f-sm ttu item-text">Comics</span>
+</a>
+</li>
+<li class="nav-item nav-icon-inline hide-tb ">
+<a href="/challenges" class="nav-link">
+<i class="ic_a challenges_b" aria-hidden="true"></i> <span class="f-sm ttu item-text">Challenges</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="right full d-none d-md-block pl-3">
+<ul class="navbar-nav rt right-align">
+
+<li class="nav-item nav-icon-inline mr-3 rl">
+<div class="rl">
+<a href="/draw" class="nav-link f-lg navbar-drawing up has-up">
+<i class="ft ft-icon-edit-2 mr-1" aria-hidden="true"></i> <span class="f-sm ttu">Start Drawing</span>
+</a>
+<navbar-upload>
+</navbar-upload>
+</div>
+</li>
+<li class="nav-item nav-icon-inline  d-flex  ">
+<text-login :icon="true" :header="true" :cla="'nav-link f-lg'" class="btn create-account-btn navbar-create-acount up"></text-login>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<div class="sidebar-cancel-wrapper"></div>
+<aside class="app-nav" id="app-nav">
+<div class="app-nav-wrapper sb">
+<div class="text-center mb-3 only-xlg">
+<a href="/">
+<img src="/images/public/logo_pixilart_simple_black.png" alt="Pixilart" class="pp light-mode-visible" />
+<img src="/images/public/logo_pixilart_simple_white.png" alt="Pixilart" class="pp dark-mode-visible" />
+</a>
+</div>
+<guest-sidebar :profile-picture="'/images/user/default_profile.png?ver=2.1'" :profile-size="83" :text="'Join the largest pixel art community'">
+</guest-sidebar>
+<ul class="app-nav-list mb-0">
+
+<li class="d-block d-md-none">
+<a href="/draw" class="bg-drawing color-white f-ttu nowrap">
+<i class="ft ft-icon-edit-2" aria-hidden="true"></i> Start Drawing
+</a>
+</li>
+<li class="d-block d-md-none">
+<div class="divider"></div>
+</li>
+
+<li>
+<a href="/" class="active">
+<i class="ic_a home u_i" data-sec="ft ft-icon-home" aria-hidden="true"></i> Home
+</a>
+</li>
+<li>
+<a href="/gallery">
+<i class="ic_a explore u_i" data-sec="ft ft-icon-compass" aria-hidden="true"></i> Gallery
+</a>
+</li>
+<li>
+<a href="/digital">
+<i class="ic_a digital u_i" data-sec="ft ft-icon-image" aria-hidden="true"></i> Digital Art
+</a>
+</li>
+<li>
+<a href="/challenges">
+<i class="ic_a challenges_b u_i" data-sec="ft ft-icon-check-square" aria-hidden="true"></i> Challenges
+</a>
+</li>
+<li>
+<a href="/groups">
+<i class="ic_a groups u_i" data-sec="ft ft-icon-grid" aria-hidden="true"></i> Groups
+</a>
+</li>
+<li>
+<a href="/contests">
+<i class="ic_a contests u_i" data-sec="ft ft-icon-award" aria-hidden="true"></i> Contests
+</a>
+</li>
+<li>
+<a href="/online" class="d-none d-lg-block  ">
+<i class="ic_a online u_i" data-sec="ft ft-icon-users" aria-hidden="true"></i> Online
+</a>
+</li>
+<li>
+<a href="/comics">
+<i class="ic_a comics u_i" data-sec="ft ft-icon-book" aria-hidden="true"></i> Comics
+</a>
+</li>
+<li>
+<a href="/palettes">
+<i class="ic_a palettes u_i" data-sec="ft ft-icon-droplet" aria-hidden="true"></i> Palettes
+</a>
+</li>
+<li>
+<a href="/requests">
+<i class="ic_a requests u_i" data-sec="ft ft-icon-file-plus" aria-hidden="true"></i> Requests
+</a>
+</li>
+<li>
+<a href="/forum">
+<i class="ic_a forums u_i" data-sec="ft ft-icon-message-circle" aria-hidden="true"></i> Forums
+</a>
+</li>
+<li>
+<div class="divider"></div>
+</li>
+
+<li>
+<a href="/shop">
+<i class="ic_a shop u_i" data-sec="ft ft-icon-shopping-cart" aria-hidden="true"></i> Shop
+<shop-cart-count class="badge badge-primary float-right" :count="0"></shop-cart-count>
+</a>
+</li>
+<li>
+<div class="divider"></div>
+</li>
+</ul>
+<ul class="app-nav-list-small mb-0">
+<li>
+<a href="/tutorials" class="active">
+Tutorials
+</a>
+</li>
+<li>
+<a href="/gallery/topics" class="active">
+Topics
+</a>
+</li>
+<li>
+<a href="/events" class="active">
+Events
+</a>
+</li>
+<li>
+<a href="/help" class="active">
+Help
+</a>
+</li>
+<li>
+<a href="/about" class="active">
+About
+</a>
+</li>
+<li>
+<a href="/help/contact" class="active">
+Contact Us
+</a>
+</li>
+<li>
+<a href="/mobile" class="active">
+Mobile App
+</a>
+</li>
+<li>
+<a href="/help/parents" class="active">
+Parents &amp; Teachers
+</a>
+</li>
+<li>
+<a href="/privacy" class="active">
+Privacy Policy
+</a>
+</li>
+<li>
+<a href="/terms" class="active">
+Terms of Use
+</a>
+</li>
+<li>
+<a href="/shop/status" class="active">
+Shop Order Lookup
+</a>
+</li>
+<li>
+<div class="divider"></div>
+</li>
+<li class="norm">
+Copyright 2021 Pixilart, LLC
+</li>
+<li>
+<div class="divider"></div>
+</li>
+</ul>
+<ul class="app-nav-list mb-0">
+<li>
+<div class="divider"></div>
+</li>
+<li>
+<div class="social-media-sidebar d-flex text-center justify-content-around">
+<a href="https://www.facebook.com/pixilart"><i class="fa fa-facebook-square"></i></a>
+<a href="https://www.instagram.com/pixilart"><i class="fa fa-instagram"></i></a>
+<a href="https://www.twitter.com/pixil_art"><i class="fa fa-twitter"></i></a>
+<a href="https://www.youtube.com/c/pixilart?sub_confirmation=1"><i class="fa fa-youtube-play"></i></a>
+</div>
+</li>
+</ul>
+</div>
+</aside>
+<main class="py-4">
+<section class="main-section home-header nav-t pb-0 sm s-p bg-flop-home">
+<div class="container text-center py-5">
+<h1 class="home-header-h1 f-ttu s color-white">Create and share art</h1>
+<h2 class="f-lg ftnm f-ttu s h-cc color-llblue bld">Make Pixel Art · Share · Socialize · Shop · <u>Free</u></h2>
+<div class="row ml-0 mr-0 mt-4 mb-2">
+<div class="col-sm-12 col-lg-6 offset-lg-3">
+<div class="row">
+<div class="col-sm-12 col-md-6 text-center text-md-right">
+<a href="/draw?ref=home-page" class="btn btn-primary btn-callout up drawing-btn">
+<i class="ft ft-icon-edit-2 mr-2" aria-hidden="true"></i> Start Drawing
+</a>
+</div>
+<div class="col-sm-12 col-md-6 text-center text-md-left mt-3 mt-md-0">
+<a href="/signup?ref=home-page" class="btn btn-primary btn-callout up create-account-btn">
+<i class="ft ft-icon-user mr-2" aria-hidden="true"></i> Create Account
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row ml-0 mr-0 mt-2 d-none d-md-inline-block">
+<div class="col-12">
+<a href="/help/parents?ref=home-page" class="py-3 px-5 xlbrd bg-s f-nm color-black d-inline-block text-center up">
+<i class="ft ft-icon-info mr-2" aria-hidden="true"></i> Teachers &amp; Parents Guidance
+</a>
+</div>
+</div>
+</div>
+<div class="im-a text-center n-mb rl px-3">
+<img src="/images/public/home-drawing-preview-2.png" alt="Drawing by dragonkey" title="Drawing by dragonkey" class="llbrd bxs-s home-image-max" />
+</div>
+<div class="home-bg-by bk bm">
+Drawing by <a href="/dragonkey" class="bk">@dragonkey</a>
+</div>
+</section>
+<section class="bg-white pt-4 brt">
+<div class="secondar-navbar   nobs  pg-t" data-up="true">
+<div class="main-content rl  nl  ">
+<ul class="navbar-list cnt mr-auto d-block d-xl-flex justify-content-center">
+<li class="nav-item">
+<a class="nav-link " href="/gallery/explore">
+Explore
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link " href="/gallery/topics">
+Topics
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link " href="/gallery/highlighted">Highlighted</a>
+</li>
+<li class="nav-item">
+<a class="nav-link " href="/gallery/rising">Trending</a>
+</li>
+<li class="nav-item">
+<a class="nav-link " href="/gallery/popular">Popular</a>
+</li>
+<li class="nav-item">
+<a class="nav-link " href="/gallery/staff-picks">Staff Picks</a>
+</li>
+<li class="nav-item">
+<a class="nav-link  active " href="/gallery/featured">Featured</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="pb-3 px-4 pt-2">
+<div class="container set">
+<gallery :filter="'featured'" :type="'art'" :images="[{&quot;id&quot;:12790305,&quot;unqid&quot;:&quot;4350e381b4f0310&quot;,&quot;user_id&quot;:359345,&quot;width&quot;:193,&quot;height&quot;:256,&quot;pixel_size&quot;:6,&quot;views&quot;:4719,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Dogma&quot;,&quot;description&quot;:&quot;(4 colors) This took me way too long, (7 months, 20+ hours, most of which was reshading the character multiple times and staring at the canvas)  not entirely satisfied, (at least it doesn&#039;t justify the time I spent on it) and the background is pretty rushed, (I still spent like 2+ hours on it to make it look at least half decent) but whatever, hope you enjoy!&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:0,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:11744385,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-31 02:20:55&quot;,&quot;updated_at&quot;:&quot;2021-11-09 18:01:07&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;4350e381b4f0310&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/4350e381b4f0310.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/4350e381b4f0310.png&quot;,&quot;url&quot;:&quot;\/art\/dogma-4350e381b4f0310&quot;,&quot;likes_count&quot;:1955,&quot;comments_count&quot;:141,&quot;size_width&quot;:1158,&quot;size_height&quot;:1536,&quot;uid&quot;:&quot;177b0&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:359345,&quot;username&quot;:&quot;bendododo&quot;,&quot;first_name&quot;:&quot;&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/c8d902216d10d7f.png?v=1631219052&quot;,&quot;is_online&quot;:&quot;1 hr ago&quot;}},{&quot;id&quot;:12769433,&quot;unqid&quot;:&quot;e69f207a1be52ec&quot;,&quot;user_id&quot;:111271,&quot;width&quot;:240,&quot;height&quot;:180,&quot;pixel_size&quot;:7,&quot;views&quot;:6326,&quot;edits&quot;:4,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;All Hallows Eve&quot;,&quot;description&quot;:&quot;Behold! The night of the monsters is upon us! They rise from the dead to - oh... oh they just wanna trick or treat. Ok cool. DESCRIPTION: This is a drawing I started exactly 30 days ago. It&#039;s been really fun testing out a bunch of new stuff on this and I think I learned a lot! If I had more time I think I would&#039;ve changed a lot but I&#039;m still satisfied with the result. Hope you enjoy the drawing, vote for it if you do, and have a very happy Halloween!!!!!!!!! MWAHAHAHAHAHAHAHAHAHAHAHAHAHAHA!!!!!!!&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:0,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:12767926,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-29 18:29:51&quot;,&quot;updated_at&quot;:&quot;2021-11-09 17:48:32&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;e69f207a1be52ec&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/e69f207a1be52ec.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/e69f207a1be52ec.png&quot;,&quot;url&quot;:&quot;\/art\/all-hallows-eve-e69f207a1be52ec&quot;,&quot;likes_count&quot;:2203,&quot;comments_count&quot;:359,&quot;size_width&quot;:1680,&quot;size_height&quot;:1260,&quot;uid&quot;:&quot;93303&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:111271,&quot;username&quot;:&quot;Grubble&quot;,&quot;first_name&quot;:&quot;Grubble&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/d81581063efb601.png?v=1635795678&quot;,&quot;is_online&quot;:&quot;11 hrs ago&quot;}},{&quot;id&quot;:12710523,&quot;unqid&quot;:&quot;bc72b2fef8a819e&quot;,&quot;user_id&quot;:842617,&quot;width&quot;:150,&quot;height&quot;:150,&quot;pixel_size&quot;:8,&quot;views&quot;:4437,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;beach&quot;,&quot;description&quot;:&quot;-&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:0,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-26 18:33:09&quot;,&quot;updated_at&quot;:&quot;2021-11-09 17:59:51&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;bc72b2fef8a819e&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:5,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/bc72b2fef8a819e.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/bc72b2fef8a819e.png&quot;,&quot;url&quot;:&quot;\/art\/beach-bc72b2fef8a819e&quot;,&quot;likes_count&quot;:1818,&quot;comments_count&quot;:160,&quot;size_width&quot;:1200,&quot;size_height&quot;:1200,&quot;uid&quot;:&quot;be4c0&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:842617,&quot;username&quot;:&quot;copper-cat&quot;,&quot;first_name&quot;:&quot;&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/026b7f2126b168a.png?v=1636189125&quot;,&quot;is_online&quot;:&quot;4 hrs ago&quot;}},{&quot;id&quot;:12769040,&quot;unqid&quot;:&quot;f2844e8b5bac7bf&quot;,&quot;user_id&quot;:139648,&quot;width&quot;:100,&quot;height&quot;:100,&quot;pixel_size&quot;:12,&quot;views&quot;:8413,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;duck pic&quot;,&quot;description&quot;:&quot;it was going so well until i had to draw all the people https:\/\/media.gettyimages.com\/photos\/people-gather-to-see-a-giant-rubber-duck-by-dutch-conceptual-artist-picture-id181118261&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:0,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-29 18:13:57&quot;,&quot;updated_at&quot;:&quot;2021-11-09 17:58:16&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:1,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;f2844e8b5bac7bf&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/f2844e8b5bac7bf.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/f2844e8b5bac7bf.png&quot;,&quot;url&quot;:&quot;\/art\/duck-pic-f2844e8b5bac7bf&quot;,&quot;likes_count&quot;:3159,&quot;comments_count&quot;:454,&quot;size_width&quot;:1200,&quot;size_height&quot;:1200,&quot;uid&quot;:&quot;ce1b0&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:139648,&quot;username&quot;:&quot;usemame-here&quot;,&quot;first_name&quot;:&quot;quinn&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/980dd0ed082e86b.png?v=1636296375&quot;,&quot;is_online&quot;:true}},{&quot;id&quot;:12714840,&quot;unqid&quot;:&quot;5a185f2d1c9fd05&quot;,&quot;user_id&quot;:57068,&quot;width&quot;:128,&quot;height&quot;:128,&quot;pixel_size&quot;:9,&quot;views&quot;:8756,&quot;edits&quot;:12,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Day 26&quot;,&quot;description&quot;:&quot;Moving on to phase two of the challenge, where we draw each other&#039;s smaller pieces in higher resolution. The source for this piece was 24x24. It was drawn by Enonigmus, who also made the palette, which I used for this. https:\/\/i.imgur.com\/lonrUMG.png. I used the doom cover as reference as I imagine he did. https:\/\/www.gamereactor.eu\/media\/29\/_3112903.jpg&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:0,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-26 22:10:34&quot;,&quot;updated_at&quot;:&quot;2021-11-09 17:58:38&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;0702694eefe60db&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/0702694eefe60db.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/0702694eefe60db.png&quot;,&quot;url&quot;:&quot;\/art\/day-26-5a185f2d1c9fd05&quot;,&quot;likes_count&quot;:2671,&quot;comments_count&quot;:469,&quot;size_width&quot;:1152,&quot;size_height&quot;:1152,&quot;uid&quot;:&quot;751ec&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:57068,&quot;username&quot;:&quot;8-bit-adventure&quot;,&quot;first_name&quot;:&quot;The Vagabond&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/545f68ec94d5159.png?v=1634796470&quot;,&quot;is_online&quot;:&quot;16 hrs ago&quot;}},{&quot;id&quot;:12712089,&quot;unqid&quot;:&quot;671770b827beb95&quot;,&quot;user_id&quot;:194422,&quot;width&quot;:280,&quot;height&quot;:480,&quot;pixel_size&quot;:4,&quot;views&quot;:10027,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Spirit of Uncaged&quot;,&quot;description&quot;:&quot;A drawing I made for Monstercats Halloween contest, been working on this on and off for roughly a week. I&#039;m pretty happy with the outcome, even if it was a pain to draw haha. Also just want to say that I won&#039;t be uploading drawings as often as I use to, and that is because I am currently in the process of moving, so I just haven&#039;t had as much time to draw as I use too. That, and I also want to start putting more time into each drawing as well. Thank you for reading :) -SL&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:0,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-26 19:41:26&quot;,&quot;updated_at&quot;:&quot;2021-11-09 18:00:17&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;671770b827beb95&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/671770b827beb95.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/671770b827beb95.png&quot;,&quot;url&quot;:&quot;\/art\/spirit-of-uncaged-671770b827beb95&quot;,&quot;likes_count&quot;:3336,&quot;comments_count&quot;:286,&quot;size_width&quot;:1120,&quot;size_height&quot;:1920,&quot;uid&quot;:&quot;3c786&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:194422,&quot;username&quot;:&quot;Starlax&quot;,&quot;first_name&quot;:&quot;EDMEnthusiast&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/3b0c5e14488fd74.png?v=1635957719&quot;,&quot;is_online&quot;:true}},{&quot;id&quot;:12719049,&quot;unqid&quot;:&quot;a6b9aeff7ac91d6&quot;,&quot;user_id&quot;:164918,&quot;width&quot;:60,&quot;height&quot;:60,&quot;pixel_size&quot;:20,&quot;views&quot;:9111,&quot;edits&quot;:4,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Candy corn stroll&quot;,&quot;description&quot;:&quot;This was meant for yesterdays challenge but I was doing it late at night and didn&#039;t have time to finish it&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:1,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-27 03:54:02&quot;,&quot;updated_at&quot;:&quot;2021-11-09 18:00:24&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;a6b9aeff7ac91d6&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:1922,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/a6b9aeff7ac91d6.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/a6b9aeff7ac91d6.gif&quot;,&quot;url&quot;:&quot;\/art\/candy-corn-stroll-a6b9aeff7ac91d6&quot;,&quot;likes_count&quot;:2977,&quot;comments_count&quot;:377,&quot;size_width&quot;:1200,&quot;size_height&quot;:1200,&quot;uid&quot;:&quot;a2e68&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:164918,&quot;username&quot;:&quot;Orbitron&quot;,&quot;first_name&quot;:&quot;Orbee&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/33792b8b4a6b0e2.png?v=1636404017&quot;,&quot;is_online&quot;:&quot;5 hrs ago&quot;}},{&quot;id&quot;:12665317,&quot;unqid&quot;:&quot;13a1aa8b66695c6&quot;,&quot;user_id&quot;:839086,&quot;width&quot;:320,&quot;height&quot;:180,&quot;pixel_size&quot;:4,&quot;views&quot;:9312,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Game mockup&quot;,&quot;description&quot;:&quot;a halloween themed game mock-up&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:1,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-23 19:36:20&quot;,&quot;updated_at&quot;:&quot;2021-11-09 17:57:32&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;13a1aa8b66695c6&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:5,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/13a1aa8b66695c6.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/13a1aa8b66695c6.gif&quot;,&quot;url&quot;:&quot;\/art\/game-mockup-13a1aa8b66695c6&quot;,&quot;likes_count&quot;:2537,&quot;comments_count&quot;:323,&quot;size_width&quot;:1280,&quot;size_height&quot;:720,&quot;uid&quot;:&quot;d2b48&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:839086,&quot;username&quot;:&quot;Megalithiccat&quot;,&quot;first_name&quot;:&quot;&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/7ce6340d495957f.png?v=1635041232&quot;,&quot;is_online&quot;:&quot;2 days ago&quot;}},{&quot;id&quot;:12603866,&quot;unqid&quot;:&quot;1ea91d0b69e1880&quot;,&quot;user_id&quot;:222219,&quot;width&quot;:240,&quot;height&quot;:130,&quot;pixel_size&quot;:6,&quot;views&quot;:5833,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Old machine&quot;,&quot;description&quot;:&quot;Not as good as I expected :\/&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:0,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-20 12:12:41&quot;,&quot;updated_at&quot;:&quot;2021-11-09 14:02:09&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;1ea91d0b69e1880&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/1ea91d0b69e1880.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/1ea91d0b69e1880.png&quot;,&quot;url&quot;:&quot;\/art\/old-machine-1ea91d0b69e1880&quot;,&quot;likes_count&quot;:1827,&quot;comments_count&quot;:207,&quot;size_width&quot;:1440,&quot;size_height&quot;:780,&quot;uid&quot;:&quot;ce5de&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:222219,&quot;username&quot;:&quot;pog2&quot;,&quot;first_name&quot;:&quot;pog2&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/8674fa08f88e78c.png?v=1635063431&quot;,&quot;is_online&quot;:&quot;3 days ago&quot;}},{&quot;id&quot;:12666062,&quot;unqid&quot;:&quot;c83304dbe17b51a&quot;,&quot;user_id&quot;:25574,&quot;width&quot;:500,&quot;height&quot;:380,&quot;pixel_size&quot;:3,&quot;views&quot;:6883,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;PARADESIA&quot;,&quot;description&quot;:&quot;reposts appreciated || Lore: My father used to bounce me on his knee and tell me stories about the day the world broke into pieces. Everybody in this awful city is dead, he\u2019d tell me, animated like a puppet, dancing on strings only he could see. By the time he was old, when the years caught up with his bright eyes, the doctors said he\u2019d lost his mind. They wanted to have him committed. But the day they came to collect him.. he was gone. That was the last anybody ever heard of him. Growing up in his absence.. I started to think the doctors were right. But now, I see it too. I have to know what happened in Paradesia. I have to stitch the world back together.&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:1,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-23 20:48:04&quot;,&quot;updated_at&quot;:&quot;2021-11-09 17:55:55&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;c83304dbe17b51a&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/c83304dbe17b51a.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/c83304dbe17b51a.gif&quot;,&quot;url&quot;:&quot;\/art\/paradesia-c83304dbe17b51a&quot;,&quot;likes_count&quot;:2107,&quot;comments_count&quot;:144,&quot;size_width&quot;:1500,&quot;size_height&quot;:1140,&quot;uid&quot;:&quot;02990&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:25574,&quot;username&quot;:&quot;bureaucrat&quot;,&quot;first_name&quot;:&quot;Jackie Duchamp&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/c304f8e96869c6e.png?v=1635022172&quot;,&quot;is_online&quot;:&quot;7 days ago&quot;}},{&quot;id&quot;:12657728,&quot;unqid&quot;:&quot;73946309320d363&quot;,&quot;user_id&quot;:11212,&quot;width&quot;:450,&quot;height&quot;:240,&quot;pixel_size&quot;:3,&quot;views&quot;:11083,&quot;edits&quot;:2,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;[[BIG SHOT]]&quot;,&quot;description&quot;:&quot;[Heaven], are you WATCHING?&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:1,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-23 02:25:27&quot;,&quot;updated_at&quot;:&quot;2021-11-09 17:55:59&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;73946309320d363&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/73946309320d363.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/73946309320d363.gif&quot;,&quot;url&quot;:&quot;\/art\/big-shot-73946309320d363&quot;,&quot;likes_count&quot;:2676,&quot;comments_count&quot;:550,&quot;size_width&quot;:1350,&quot;size_height&quot;:720,&quot;uid&quot;:&quot;f5d35&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:11212,&quot;username&quot;:&quot;EmeraldSerpent&quot;,&quot;first_name&quot;:&quot;EmeraldSerpent&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/19047a4b71.png?v=1636431978&quot;,&quot;is_online&quot;:true}},{&quot;id&quot;:12593782,&quot;unqid&quot;:&quot;8786259ca0b414f&quot;,&quot;user_id&quot;:415130,&quot;width&quot;:100,&quot;height&quot;:100,&quot;pixel_size&quot;:12,&quot;views&quot;:6375,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Udnerwater&quot;,&quot;description&quot;:&quot;Fishy babies \u2665 Anyways hi hope you like it. Also criticism is appreciated. 100x100 and 23 colors okay bye xdddd&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:0,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-19 18:57:21&quot;,&quot;updated_at&quot;:&quot;2021-11-09 17:32:43&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;8786259ca0b414f&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:5,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/8786259ca0b414f.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/8786259ca0b414f.png&quot;,&quot;url&quot;:&quot;\/art\/udnerwater-8786259ca0b414f&quot;,&quot;likes_count&quot;:1764,&quot;comments_count&quot;:567,&quot;size_width&quot;:1200,&quot;size_height&quot;:1200,&quot;uid&quot;:&quot;b1351&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:415130,&quot;username&quot;:&quot;kavpix&quot;,&quot;first_name&quot;:&quot;iBelieveiCanFly&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/f66f704582928cd.png?v=1636474307&quot;,&quot;is_online&quot;:&quot;2 hrs ago&quot;}},{&quot;id&quot;:12613193,&quot;unqid&quot;:&quot;a8082672504ec71&quot;,&quot;user_id&quot;:92000,&quot;width&quot;:230,&quot;height&quot;:150,&quot;pixel_size&quot;:8,&quot;views&quot;:10334,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;\u2800&quot;,&quot;description&quot;:&quot;\u2800\ud83d\udea9&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:1,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:12507509,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-20 19:40:52&quot;,&quot;updated_at&quot;:&quot;2021-11-09 16:06:55&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;a8082672504ec71&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/a8082672504ec71.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/a8082672504ec71.gif&quot;,&quot;url&quot;:&quot;\/art\/-a8082672504ec71&quot;,&quot;likes_count&quot;:3022,&quot;comments_count&quot;:383,&quot;size_width&quot;:1840,&quot;size_height&quot;:1200,&quot;uid&quot;:&quot;fb229&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:92000,&quot;username&quot;:&quot;ThaSilentArtist&quot;,&quot;first_name&quot;:&quot;0&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/d61ab5a9d136675.png?v=1635563171&quot;,&quot;is_online&quot;:&quot;19 hrs ago&quot;}},{&quot;id&quot;:12576214,&quot;unqid&quot;:&quot;21535ab5d75af88&quot;,&quot;user_id&quot;:227430,&quot;width&quot;:240,&quot;height&quot;:100,&quot;pixel_size&quot;:6,&quot;views&quot;:6087,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Installation 07&quot;,&quot;description&quot;:&quot;I took another crack at drawing zeta halo, and I&#039;m much happier with the results :D #halo #HaloInfinite #xbox #zeta&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:1,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-18 19:02:00&quot;,&quot;updated_at&quot;:&quot;2021-11-09 00:15:49&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;21535ab5d75af88&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:1,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/21535ab5d75af88.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/21535ab5d75af88.gif&quot;,&quot;url&quot;:&quot;\/art\/installation-07-21535ab5d75af88&quot;,&quot;likes_count&quot;:1753,&quot;comments_count&quot;:174,&quot;size_width&quot;:1440,&quot;size_height&quot;:600,&quot;uid&quot;:&quot;f612e&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:227430,&quot;username&quot;:&quot;WindWakinLink&quot;,&quot;first_name&quot;:&quot;Windy&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/d5994179e764de8.png?v=1634317348&quot;,&quot;is_online&quot;:true}},{&quot;id&quot;:12568358,&quot;unqid&quot;:&quot;ddf5af310810ca0&quot;,&quot;user_id&quot;:96484,&quot;width&quot;:476,&quot;height&quot;:208,&quot;pixel_size&quot;:3,&quot;views&quot;:7321,&quot;edits&quot;:0,&quot;photo_status&quot;:1,&quot;title&quot;:&quot;Reddingtown&quot;,&quot;description&quot;:&quot;3 months old project that I forgot about and have now finished. 204 frames. Fleja helped me compress it so I could upload it as an actual drawing.&quot;,&quot;is_user&quot;:1,&quot;is_gif&quot;:1,&quot;last_updated&quot;:&quot;0000-00-00 00:00:00&quot;,&quot;is_deleted&quot;:&quot;0&quot;,&quot;can_edit&quot;:0,&quot;is_collab&quot;:0,&quot;is_traced&quot;:0,&quot;edit_id&quot;:null,&quot;lock_comments&quot;:0,&quot;is_approved&quot;:1,&quot;created_at&quot;:&quot;2021-10-18 10:22:11&quot;,&quot;updated_at&quot;:&quot;2021-11-09 00:15:47&quot;,&quot;is_shoppable&quot;:1,&quot;is_public_shop&quot;:0,&quot;group_id&quot;:0,&quot;image_id&quot;:&quot;ddf5af310810ca0&quot;,&quot;has_replay&quot;:0,&quot;app_id&quot;:0,&quot;color_id&quot;:0,&quot;program_id&quot;:5,&quot;image_url&quot;:&quot;https:\/\/art.pixilart.com\/thumb\/ddf5af310810ca0.png&quot;,&quot;full_image_url&quot;:&quot;https:\/\/art.pixilart.com\/ddf5af310810ca0.gif&quot;,&quot;url&quot;:&quot;\/art\/reddingtown-ddf5af310810ca0&quot;,&quot;likes_count&quot;:1900,&quot;comments_count&quot;:193,&quot;size_width&quot;:1428,&quot;size_height&quot;:624,&quot;uid&quot;:&quot;80e6c&quot;,&quot;type&quot;:&quot;art&quot;,&quot;is_public&quot;:true,&quot;liked&quot;:false,&quot;user&quot;:{&quot;id&quot;:96484,&quot;username&quot;:&quot;Vinzenzius&quot;,&quot;first_name&quot;:&quot;Reddington&quot;,&quot;last_name&quot;:&quot;&quot;,&quot;profile_picture&quot;:&quot;https:\/\/cdn.pixilart.com\/images\/user\/profile\/small\/a97595b4f563ebc.png?v=1635182584&quot;,&quot;is_online&quot;:true}}]" :stop-auto="true" :show-more="true" :full-image="true" :no-comments="true">
+</gallery>
+</div>
+</div>
+</section>
+<section class="bg-dark-gra brt brb noscroll sec-brm">
+<div class="home-bg-by d-none d-md-block">
+Drawing by <a href="/pog2">@pog2</a>
+</div>
+<div class="bg-absolute bg-half bg-pattern animate"></div>
+<div class="container pt-5 pb-5">
+<div class="row row-split align-items-center">
+<div class="col-12 col-sm-12 col-md-12 col-lg-6 color-white text-center text-md-left">
+<div class="pr-0 pr-lg-5">
+<h2 class="f-xxxlg ftr bld">Powerful Drawing Tool</h2>
+<h3 class="f-lg mb-4 ftnm ftr bld">Did we mention it's free?</h3>
+<p class="f-md">The Pixilart Drawing Application is your ultimate pixel drawing tool. Make beautiful pixel art, create game sprites, GIF animations and even draw online together with others.</p>
+<div class="mt-4">
+<a href="/features" class="btn btn-callout up btn-outline-light bx mt-3 mt-md-0">
+Learn More <i class="ft ft-icon-arrow-right ml-2" aria-hidden="true"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-ofl mt-5 mt-lg-0 d-none d-md-block">
+<img src="/images/public/app_preview_2.png" class="border-ra" alt="ultimate pixel drawing tool">
+</div>
+</div>
+</div>
+</section>
+<section class="s-p brb">
+<div class="container pt-5 pb-5">
+<div class="row text-center">
+<div class="col-sm-12 col-lg-6 offset-lg-3">
+<h2 class="mb-3 f-xxxlg bld">FOR CREATIVE MINDS</h2>
+<p class="mb-5 f-lg color-plblue">Join thousands of creative minds just like yourself. Pixilart is a community of artists who enjoy retro style art, modern art, games and so much more.</p>
+<a href="/signup?ref=callout-footer" class="btn btn-primary btn-callout up create-account-btn">
+<i class="ft ft-icon-user mr-2" aria-hidden="true"></i> Create Account
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<response-error></response-error>
+<response-success></response-success>
+
+<modal-report></modal-report>
+<modal-image></modal-image>
+<modal-likes></modal-likes>
+<modal-replay></modal-replay>
+<modal-embed></modal-embed>
+<modal-auth></modal-auth>
+
+<user-card></user-card>
+<footer class="bg-white footer-sticky">
+<div class="main-section pt-5 pb-5">
+<div class="container">
+<div class="row">
+<div class="col-12 col-sm-12 col-md-8 col-lg-4 offset-sm-0 offset-md-2 offset-lg-0 pb-5 pb-md-0 mb-md-5 mb-lg-0 text-center text-lg-left">
+<a class="navbar-brand" href="http://www.pixilart.com">
+<img src="/images/public/logo_pixilart_simple_black.png" alt="Pixilart" class="pp light-mode-visible" />
+<img src="/images/public/logo_pixilart_simple_white.png" alt="Pixilart" class="pp dark-mode-visible" />
+</a>
+<div class="mt-3 pr-0 pr-lg-5">
+<div class="row">
+<div class="col-12 col-sm-8 offset-sm-2 col-lg-12 offset-lg-0">
+<div class="f-nm color-pblue dk-white">Pixilart is a <a href="/help/parents">social platform for all ages</a>. Create beautiful art and share with the Pixilart community.</div>
+</div>
+</div>
+</div>
+<div class="mt-3 f-lg d-flex align-items-center justify-content-center justify-content-lg-start footer-social-icon-list">
+<a href="https://www.pixilart.com/pixilart" target="_blank" class="social-icon color-black up nbs mr-2">
+<svg id="Layer_1" width="21px" height="18px" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.68 30.55">
+<title>pixilart-icon</title>
+<path fill="#000000" d="M35.36,35.39h-5.1V30.3h5.1Zm5.1-5.09h-5.1v5.09h5.1Zm15.29,0h-5.1v5.09h5.1Zm-5.1,0h-5.1v5.09h5.1ZM30.26,35.39h-5.1v5.1h5.1Zm0,5.1h-5.1v5.1h5.1Zm5.1-5.1h-5.1v5.1h5.1Zm0,5.1h-5.1v5.1h5.1Zm5.1-5.1h-5.1v5.1h5.1Zm0,5.1h-5.1v5.1h5.1Zm5.09-5.1H40.46v5.1h5.09Zm0,0H40.46v5.1h5.09Zm5.1,0h-5.1v5.1h5.1Zm0,5.1h-5.1v5.1h5.1Zm5.1-5.1h-5.1v5.1h5.1Zm0,5.1h-5.1v5.1h5.1Zm5.1-5.1h-5.1v5.1h5.1Zm0,5.1h-5.1v5.1h5.1ZM35.36,45.57h-5.1v5.1h5.1Zm5.1,0h-5.1v5.1h5.1Zm10.19,0h-5.1v5.1h5.1Zm5.1,0h-5.1v5.1h5.1Zm-5.1,5.08h-5.1v5.1h5.1Zm-10.19,0h-5.1v5.1h5.1Zm5.09,5.1H40.46v5.1h5.09Zm0-15.26H40.46v5.1h5.09Zm0,5.08H40.46v5.1h5.09Zm0,5.08H40.46v5.1h5.09Z" transform="translate(-25.16 -30.3)" />
+</svg>
+</a>
+<a href="https://www.facebook.com/pixilart" target="_blank" class="social-icon color-black up nbs mr-2"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+<a href="https://www.twitter.com/pixil_art" target="_blank" class="social-icon color-black up nbs mr-2"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+<a href="https://www.instagram.com/pixilart" target="_blank" class="social-icon color-black up nbs mr-2"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+<a href="https://www.youtube.com/c/pixilart" target="_blank" class="social-icon color-black up nbs"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+</div>
+<div class="mt-4">
+<p class="mb-3 bld f-nm">Download Pixilart Mobile App</p>
+<a href="https://itunes.apple.com/us/app/pixilart/id1440580518" target="_blank" class="up social-app-l apple">
+Download on App Store
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.pixilart.app&hl=en" target="_blank" class="ml-2 up social-app-l google">
+Download on Google Play
+</a>
+</div>
+</div>
+<div class="col-6 col-md-3 col-lg-2 mb-mt-lg mb-3 mb-md-0">
+<h5 class="mb-3 f-ttu f-sm bld s">About</h5>
+<ul class="mb-0 list-unstyled foot-nav-list f-nm">
+<li><a href="/about">About Us</a></li>
+<li><a href="/branding">Branding</a></li>
+<li><a href="/events">Events</a></li>
+<li><a href="/advertise">Advertise</a></li>
+<li><a href="/help/contact">Contact Us</a></li>
+<li><a href="/help">Help & Faqs</a></li>
+<li><a href="/help/parents?ref=footer">Teachers & Parents</a></li>
+</ul>
+</div>
+<div class="col-6 col-md-3 col-lg-2 mb-mt-lg">
+<h5 class="mb-3 f-ttu f-sm bld s">Drawing</h5>
+<ul class="mb-0 list-unstyled foot-nav-list f-nm">
+<li><a href="/draw">Start Drawing</a></li>
+<li><a href="/features">Features</a></li>
+<li><a href="/online">Draw Online</a></li>
+<li><a href="/mobile">Mobile App</a></li>
+</ul>
+</div>
+<div class="col-6 col-md-3 col-lg-2 mb-mt-lg">
+<h5 class="mb-3 f-ttu f-sm bld s">Explore</h5>
+<ul class="mb-0 list-unstyled foot-nav-list f-nm">
+<li><a href="/gallery">Gallery</a></li>
+<li><a href="/digital">Digital Art</a></li>
+<li><a href="/contests">Contests</a></li>
+<li><a href="/groups">Groups</a></li>
+<li><a href="/forum">Forums</a></li>
+<li><a href="/tutorials">Tutorials</a></li>
+</ul>
+</div>
+<div class="col-6 col-md-3 col-lg-2 mb-mt-lg">
+<h5 class="mb-3 f-ttu f-sm bld s">Shop</h5>
+<ul class="mb-0 list-unstyled foot-nav-list f-nm">
+<li><a href="/shop">Pixilart Shop</a></li>
+<li><a href="/shop/status">Order Status</a></li>
+<li><a href="/shop/marketplace">Marketplace</a></li>
+<li><a href="/help/returns">Shipping & Returns</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="main-section pt-5 pb-5 brt">
+<div class="container">
+<div class="row ">
+<div class="col-sm-12 col-md-6 dk-white">
+© 2021 Pixilart, LLC - Coded with love in Fargo, ND<br>
+</div>
+<div class="col-sm-12 col-md-6 text-right mb-text-left mb-mt">
+<a href="/privacy" class="color-black mr-3">Privacy Policy</a>
+<a href="/terms" class="color-black mr-3">Terms of Use</a>
+<a href="/about" class="color-black">About</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<div class="mobile-listing d-block d-lg-none">
+<div class="mobile-fixed-footer ckie" data-cookie-number="true" data-cookie-type="show" data-cookie="mobile-footer" data-cookie-value="1" style="display:none">
+<div class="mobile-footer-wrapper d-flex justify-content-center f-nm">
+<div class="mobile-footer-content">
+<div class="d-flex align-items-center">
+<a href="/mobile" class="mp mobile-link">
+Get the mobile app!
+</a>
+<div class="ckie-close mp" data-parent=".mobile-fixed-footer" style="cursor: pointer;">
+<i class="ft ft-icon-x" aria-hidden="true"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="panel float btmr ckie nobrd" data-cookie-number="true" data-cookie-type="show" data-cookie="pixilart-concent-cookies" data-cookie-value="1" style="display:none">
+<div class="panel-close ex ckie-close">
+<i class="ft ft-icon-x mr-2" aria-hidden="true"></i> <span class="f-nm">Got It</span>
+</div>
+<div class="panel-body nopad">
+<div class="panel-image-bg normal f-nm nd p-4 pt-5">
+<div class="mr-3 f-xxxlg d-none d-md-block">
+👋
+</div>
+<div>
+We use cookies to ensure that you have the best experience possible on our website. <A href="/privacy">Our privacy policy</A>
+</div>
+</div>
+</div>
+</div> </div>
+
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js?v3', {
+    	scope: '/'
+    })
+    .then(function(reg) {
+      	//console.log('Successfully registered service worker', reg);
+    }).catch(function(err) {
+     	console.warn('Error whilst registering service worker', err);
+    });
+}
+</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"6eae353a0d","applicationID":"20127417","transactionName":"ZlxSZkJWWhdZAEJZWV8WcVFEXlsKFyJGQGp5TURCbHRbCkwRWVxaVEtDbmdSVjhwDFtVdV5XREBfW1gBSiNfXlJUQQ==","queueTime":0,"applicationTime":56,"atts":"ShtREApMSRk=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>
