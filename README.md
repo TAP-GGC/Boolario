@@ -14,7 +14,7 @@ Boolario is a Mario parody minigame that uses Unity to teach others about game d
 - Austin Mathews
 <img src="https://user-images.githubusercontent.com/72395832/138807313-b1fd609d-6b91-4bb0-86db-5d19b8002ed5.jpg" width="500"/>
 
-### Advisers
+### Advisors
 - Dr. Cengiz Gunay
 - Dr. Rahaf Barakat
 
