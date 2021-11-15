@@ -6,9 +6,7 @@ Boolario is a Mario parody minigame that uses Unity to teach others about game d
 **Our Website:** http://boolario.altervisa.org
 
 
-## Team
-
-### Team Members
+## Our Team
 - Khamilah Nixon
 - Anya Solodky 
 - Austin Mathews
@@ -18,16 +16,16 @@ Boolario is a Mario parody minigame that uses Unity to teach others about game d
 - Dr. Cengiz Gunay
 - Dr. Rahaf Barakat
 
+## Introduction
+As the world of technology expands exponentially, Information Technology becomes more relevent. The Technology Ambassador Program (TAP) aims to inspire and motivate non-IT and IT minds in the field of Information Technology.  Our team developed an educational computer game, Boolario, to teach logic statements and game developement concepts to student with various backgrounds. Similar in style and design to its 1985 counterpart, Mario, Boolario utilizes logic statements to manipulate the outcome of collecting coins during gameplay. Our collecting system allows players to collect coins holding both "True" and "False" values to make an "AND" or "OR" logic statement true.
+
+## Goals
+-Teaching game development concepts
+-Teaching fundamentals of logic statements
+-Teaching iteration and randomization
+
 ## Publications
 1. CCSC abstract - Khamilah Nixon, Anya Solodky, Austin Mathews, Cengiz Gunay, Rahaf Barakat. Boolario, CCSC: Southeastern Region (CCSC:SE), [dates TBA]
-
-The world of technology is developing at an intense rate. As students of the future are increasingly learning, computer science becomes more relevant every day. That being said, TAP (Technology Ambassador Program) provides the opportunity to inspire others in the field of Information Technology.
-
-Our team has developed a project which takes the form of an educational computer game.  We are hoping to teach logic statements in the gameplay to a large audience with various backgrounds. The Best TAP Group would like to introduce to you: Boolario.
-This project is a side-scroller-type game, similar to Mario, in which we teach the concept of booleans. Our game focuses on how certain statements such as 'AND' and 'OR' can affect these booleans. In order to achieve this, a coin collecting system is in place to demonstrate the process. There are two coins: a false and a true coin. By creating a goal of TRUE or FALSE on the UI, the player has to collect a set of 2 coins to make the statement correct. 
-
-Our workshop goals consist of introducing concepts of game development to our audience; explaining the fundamentals of logic statements; discussing iteration and randomization; and of course, booleans. The biggest challenge posed to our team thus far is how to effectively host this workshop in person and online. We have recognized several potential approaches. Our team is very excited for the opportunity to build this p
-
 2. CREATE Symposium Poster, [date TBA], Georgia Gwinnett College
 
 ## Outreach Activities
@@ -37,9 +35,6 @@ Our workshop goals consist of introducing concepts of game development to our au
 
 ## Technology
 For this program, our team used [Makey Makey](https://unity.com/), a device that changes a conductor into a source of computer input, and [Unity](https://makeymakey.com/), a 2D and 3D game engine.
-[image of unity and makey makey]
-
-
 - Visual Studio or Visual Studio Code
 - Unity
 - Sprite creation software
