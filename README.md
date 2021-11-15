@@ -20,9 +20,9 @@ Boolario is a Mario parody minigame that uses Unity to teach others about game d
 As the world of technology expands exponentially, Information Technology becomes more relevent. The Technology Ambassador Program (TAP) aims to inspire and motivate non-IT and IT minds in the field of Information Technology.  Our team developed an educational computer game, Boolario, to teach logic statements and game developement concepts to student with various backgrounds. Similar in style and design to its 1985 counterpart, Mario, Boolario utilizes logic statements to manipulate the outcome of collecting coins during gameplay. Our collecting system allows players to collect coins holding both "True" and "False" values to make an "AND" or "OR" logic statement true.
 
 ## Goals
--Teaching game development concepts
--Teaching fundamentals of logic statements
--Teaching iteration and randomization
+- Teaching game development concepts
+- Teaching fundamentals of logic statements
+- Teaching iteration and randomization
 
 ## Publications
 1. CCSC abstract - Khamilah Nixon, Anya Solodky, Austin Mathews, Cengiz Gunay, Rahaf Barakat. Boolario, CCSC: Southeastern Region (CCSC:SE), [dates TBA]
@@ -34,10 +34,13 @@ As the world of technology expands exponentially, Information Technology becomes
 3. Class Workshops - on [dates TBA] to promote IT field to non-IT college students
 
 ## Technology
-For this program, our team used [Makey Makey](https://unity.com/), a device that changes a conductor into a source of computer input, and [Unity](https://makeymakey.com/), a 2D and 3D game engine.
-- Visual Studio or Visual Studio Code
-- Unity
-- Sprite creation software
+For this program, our team used [Unity](https://unity.com/), a device that changes a conductor into a source of computer input.
+<img src="media/Unity.png" width="750"/>
+
+Our team also utlized [Makey Makey](https://makeymakey.com/), a 2D and 3D game engine.
+<img src="media/MakeyMakey.jpg" width="750"/>
+
+We also used Visual Code Studio to create scripts and PixilArt to design sprites.
 
 ### Optional:
 - GitHub Desktop
