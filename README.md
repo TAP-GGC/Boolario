@@ -1,9 +1,9 @@
-# Boolario
+# Using Unity to Teach Game Development and Programming Concepts 
 
 ## Description
 Boolario is a Mario parody minigame that uses Unity to teach others about game development concepts in a 2D game, such as graphical design, scripting in C#, and hitboxes.  In this program, students will learn about boolean statements by collecting TRUE and FALSE coins to make a logic statement correct.  This program is intented to increase interest in coding and game development by allowing students the opportunity to put their creations into practice as well as share them with others. 
 
-**Our Website:** http://boolario.altervisa.org
+**Our Website:** http://boolario.altervista.org
 
 
 ## Our Team
@@ -29,7 +29,7 @@ As the world of technology expands exponentially, Information Technology becomes
 ## Outreach Activities
 1. Super Saturday Series (S3), Nov 9, Georgia Gwinnett College = middle and high school girls to promote IT and STEM career
 2. TAP Expo, Oct 10, 2021, Georgia Gwinnett College - To promote IT field and the TAP program to college students 
-3. Class Workshops - on [dates TBA] to promote IT field to non-IT college students
+3. Class Workshops - on 2021 Oct 26, Oct 28, and Nov 2 to promote IT field to non-IT college students
 
 ## Technology
 For this program, our team used [Unity](https://unity.com/), a device that changes a conductor into a source of computer input.
