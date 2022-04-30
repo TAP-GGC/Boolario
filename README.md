@@ -6,6 +6,9 @@ Boolario is a Mario parody minigame that uses Unity to teach others about game d
 **Our Website:** http://boolario.altervista.org
 The Powerpoint: https://docs.google.com/presentation/d/1eg05zZUlNgmQK6OVeja_F3JEJ26rJ-LpUEPdQBIVNtE/edit?usp=sharing
 
+Anya's Powerpoint for SS3:
+https://docs.google.com/presentation/d/1ERaztteGWZZUr2YtAYBMxUivh05xZGRJ-f6aIwFeGCQ/edit?usp=sharing
+
 
 ## Our Team
 <img src="https://user-images.githubusercontent.com/72395832/138807313-b1fd609d-6b91-4bb0-86db-5d19b8002ed5.jpg" width="500"/>
